@@ -1,5 +1,5 @@
 import OffersList from '../../components/offers-list/offers-list';
-import { Link } from 'react-router-dom';
+// import { a } from 'react-router-dom';
 
 type MainPageProps = {
   quantityOffers: number;
@@ -19,24 +19,24 @@ function MainPage({quantityOffers}: MainPageProps): JSX.Element{
           <div className="container">
             <div className="header__wrapper">
               <div className="header__left">
-                <Link className="header__logo-link header__logo-link--active" to="#">
+                <a className="header__logo-link header__logo-link--active" href="#">
                   <img className="header__logo" src="img/logo.svg" alt="6 cities logo" width="81" height="41"/>
-                </Link>
+                </a>
               </div>
               <nav className="header__nav">
                 <ul className="header__nav-list">
                   <li className="header__nav-item user">
-                    <Link className="header__nav-link header__nav-link--profile" to="#">
+                    <a className="header__nav-link header__nav-link--profile" href="#">
                       <div className="header__avatar-wrapper user__avatar-wrapper">
                       </div>
                       <span className="header__user-name user__name">Oliver.conner@gmail.com</span>
                       <span className="header__favorite-count">3</span>
-                    </Link>
+                    </a>
                   </li>
                   <li className="header__nav-item">
-                    <Link className="header__nav-link" to="#">
+                    <a className="header__nav-link" href="#">
                       <span className="header__signout">Sign out</span>
-                    </Link>
+                    </a>
                   </li>
                 </ul>
               </nav>
@@ -50,34 +50,34 @@ function MainPage({quantityOffers}: MainPageProps): JSX.Element{
             <section className="locations container">
               <ul className="locations__list tabs__list">
                 <li className="locations__item">
-                  <Link className="locations__item-link tabs__item" to="#">
+                  <a className="locations__item-link tabs__item" href="#">
                     <span>Paris</span>
-                  </Link>
+                  </a>
                 </li>
                 <li className="locations__item">
-                  <Link className="locations__item-link tabs__item" to="#">
+                  <a className="locations__item-link tabs__item" href="#">
                     <span>Cologne</span>
-                  </Link>
+                  </a>
                 </li>
                 <li className="locations__item">
-                  <Link className="locations__item-link tabs__item" to="#">
+                  <a className="locations__item-link tabs__item" href="#">
                     <span>Brussels</span>
-                  </Link>
+                  </a>
                 </li>
                 <li className="locations__item">
-                  <Link className="locations__item-link tabs__item tabs__item--active" to="#">
+                  <a className="locations__item-link tabs__item tabs__item--active" href="#">
                     <span>Amsterdam</span>
-                  </Link>
+                  </a>
                 </li>
                 <li className="locations__item">
-                  <Link className="locations__item-link tabs__item" to="#">
+                  <a className="locations__item-link tabs__item" href="#">
                     <span>Hamburg</span>
-                  </Link>
+                  </a>
                 </li>
                 <li className="locations__item">
-                  <Link className="locations__item-link tabs__item" to="#">
+                  <a className="locations__item-link tabs__item" href="#">
                     <span>Dusseldorf</span>
-                  </Link>
+                  </a>
                 </li>
               </ul>
             </section>

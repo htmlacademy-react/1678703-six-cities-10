@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+// import { a } from 'react-router-dom';
 
 function OfferCard(): JSX.Element{
   return (
@@ -7,9 +7,9 @@ function OfferCard(): JSX.Element{
         <span>Premium</span>
       </div>
       <div className="cities__image-wrapper place-card__image-wrapper">
-        <Link to="#">
+        <a href="#">
           <img className="place-card__image" src="img/apartment-01.jpg" width="260" height="200" alt="Place foto"/>
-        </Link>
+        </a>
       </div>
       <div className="place-card__info">
         <div className="place-card__price-wrapper">
@@ -31,7 +31,7 @@ function OfferCard(): JSX.Element{
           </div>
         </div>
         <h2 className="place-card__name">
-          <Link to="#">Beautiful &amp; luxurious apartment at great location</Link>
+          <a href="#">Beautiful &amp; luxurious apartment at great location</a>
         </h2>
         <p className="place-card__type">Apartment</p>
       </div>

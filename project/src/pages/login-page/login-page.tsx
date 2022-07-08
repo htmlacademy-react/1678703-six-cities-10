@@ -1,4 +1,3 @@
-import {Link} from 'react-router-dom';
 
 function LoginPage(): JSX.Element{
 
@@ -13,9 +12,9 @@ function LoginPage(): JSX.Element{
           <div className="container">
             <div className="header__wrapper">
               <div className="header__left">
-                <Link className="header__logo-link" to="#">
+                <a className="header__logo-link" href="#">
                   <img className="header__logo" src="img/logo.svg" alt="6 cities logo" width="81" height="41"/>
-                </Link>
+                </a>
               </div>
             </div>
           </div>
@@ -39,9 +38,9 @@ function LoginPage(): JSX.Element{
             </section>
             <section className="locations locations--login locations--current">
               <div className="locations__item">
-                <Link className="locations__item-link" to="#">
+                <a className="locations__item-link" href="#">
                   <span>Amsterdam</span>
-                </Link>
+                </a>
               </div>
             </section>
           </div>
