@@ -1,4 +1,4 @@
-import OffersList from '../../offers-list/offers-list';
+import OffersList from '../../components/offers-list/offers-list';
 // import { a } from 'react-router-dom';
 
 type MainPageProps = {

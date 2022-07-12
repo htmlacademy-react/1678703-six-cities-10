@@ -2,11 +2,11 @@
 const PercentRating = 20;
 
 const AppRoute = {
-  MAIN: '/',
-  OFFER: '/offer/:id',
-  FAVORITES: '/favorites',
-  LOGIN: '/login',
-  NOT_FOUND_PAGE: '/not_found'
+  Main: '/',
+  Offer: '/offer/:id',
+  Favorites: '/favorites',
+  Login: '/login',
+  NotFoundPage: '/not_found'
 };
 
 const getRating = (rating) => ({
