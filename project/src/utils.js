@@ -1,4 +1,4 @@
-import {SortingType} from "./const";
+import {SortingType, PERCENT_RATING} from './const';
 
 let typeLowHigh = true;
 
@@ -16,18 +16,23 @@ const compareRated = (elementA, elementB) => {
 
 const getOffersSorting = (sortingType, offers) => {
   switch (sortingType) {
-    case SortingType.POPULAR:
+    case SortingType.Popular:
       return offers.slice();
-    case SortingType.LOW_TO_HIGH:
+    case SortingType.LowToHigh:
       typeLowHigh = true;
       return offers.slice().sort(comparePrice);
-    case SortingType.HIGH_TO_LOW:
+    case SortingType.HighToLow:
       typeLowHigh = false;
       return offers.slice().sort(comparePrice);
-    case SortingType.TOP_RATED:
+    case SortingType.TopRated:
       return offers.slice().sort(compareRated);
+    default:
+      return offers.slice();
   }
-  return offers;
 };
 
-export {getOffersSorting};
+const getRating = (rating) => ({
+  width: `${Math.round(rating) * PERCENT_RATING}%`,
+});
+
+export {getOffersSorting, getRating};
