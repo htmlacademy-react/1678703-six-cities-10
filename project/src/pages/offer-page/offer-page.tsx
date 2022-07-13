@@ -1,3 +1,4 @@
+import {Link} from 'react-router-dom';
 
 function OfferPage(): JSX.Element{
 
@@ -12,24 +13,24 @@ function OfferPage(): JSX.Element{
           <div className="container">
             <div className="header__wrapper">
               <div className="header__left">
-                <a className="header__logo-link" href="#">
+                <Link className="header__logo-link" to="#">
                   <img className="header__logo" src="img/logo.svg" alt="6 cities logo" width="81" height="41"/>
-                </a>
+                </Link>
               </div>
               <nav className="header__nav">
                 <ul className="header__nav-list">
                   <li className="header__nav-item user">
-                    <a className="header__nav-link header__nav-link--profile" href="#">
+                    <Link className="header__nav-link header__nav-link--profile" to="#">
                       <div className="header__avatar-wrapper user__avatar-wrapper">
                       </div>
                       <span className="header__user-name user__name">Oliver.conner@gmail.com</span>
                       <span className="header__favorite-count">3</span>
-                    </a>
+                    </Link>
                   </li>
                   <li className="header__nav-item">
-                    <a className="header__nav-link" href="#">
+                    <Link className="header__nav-link" to="#">
                       <span className="header__signout">Sign out</span>
-                    </a>
+                    </Link>
                   </li>
                 </ul>
               </nav>
@@ -239,9 +240,9 @@ function OfferPage(): JSX.Element{
               <div className="near-places__list places__list">
                 <article className="near-places__card place-card">
                   <div className="near-places__image-wrapper place-card__image-wrapper">
-                    <a href="#">
+                    <Link to="#">
                       <img className="place-card__image" src="img/room.jpg" width="260" height="200" alt="Place"/>
-                    </a>
+                    </Link>
                   </div>
                   <div className="place-card__info">
                     <div className="place-card__price-wrapper">
@@ -263,7 +264,7 @@ function OfferPage(): JSX.Element{
                       </div>
                     </div>
                     <h2 className="place-card__name">
-                      <a href="#">Wood and stone place</a>
+                      <Link to="#">Wood and stone place</Link>
                     </h2>
                     <p className="place-card__type">Private room</p>
                   </div>
@@ -271,9 +272,9 @@ function OfferPage(): JSX.Element{
 
                 <article className="near-places__card place-card">
                   <div className="near-places__image-wrapper place-card__image-wrapper">
-                    <a href="#">
+                    <Link to="#">
                       <img className="place-card__image" src="img/apartment-02.jpg" width="260" height="200" alt="Place"/>
-                    </a>
+                    </Link>
                   </div>
                   <div className="place-card__info">
                     <div className="place-card__price-wrapper">
@@ -295,7 +296,7 @@ function OfferPage(): JSX.Element{
                       </div>
                     </div>
                     <h2 className="place-card__name">
-                      <a href="#">Canal View Prinsengracht</a>
+                      <Link to="#">Canal View Prinsengracht</Link>
                     </h2>
                     <p className="place-card__type">Apartment</p>
                   </div>
@@ -306,9 +307,9 @@ function OfferPage(): JSX.Element{
                     <span>Premium</span>
                   </div>
                   <div className="near-places__image-wrapper place-card__image-wrapper">
-                    <a href="#">
+                    <Link to="#">
                       <img className="place-card__image" src="img/apartment-03.jpg" width="260" height="200" alt="Place"/>
-                    </a>
+                    </Link>
                   </div>
                   <div className="place-card__info">
                     <div className="place-card__price-wrapper">
@@ -330,7 +331,7 @@ function OfferPage(): JSX.Element{
                       </div>
                     </div>
                     <h2 className="place-card__name">
-                      <a href="#">Nice, cozy, warm big bed apartment</a>
+                      <Link to="#">Nice, cozy, warm big bed apartment</Link>
                     </h2>
                     <p className="place-card__type">Apartment</p>
                   </div>
