@@ -12,30 +12,58 @@ type OfferCardProps = {
 
 
 function OfferCard(props: OfferCardProps): JSX.Element{
-
-  const {offer} = props;
-  const {id, price, isFavorite, isPremium, title, type, rating, previewImage} = offer;
+  const { offer } = props;
+  const {
+    id,
+    price,
+    isFavorite,
+    isPremium,
+    title,
+    type,
+    rating,
+    previewImage,
+  } = offer;
   const otherOffer = false;
   const ratingStyle = getRating(rating);
 
   const [navigation, setNavigation] = useState(false);
+  const [, setActive] = useState(-1); //запоминает активный оффер
 
-  if(navigation){
+  if (navigation) {
     return <Navigate to={AppRoute.Offer + id} />;
   }
+
+  // eslint-disable-next-line no-console
+  // console.log('22', id);
+
+  const handleMouseOver = () => {
+    // eslint-disable-next-line no-console
+    // console.log('11', id);
+    setActive(id);
+  };
 
   const handleCardClick = () => {
     setNavigation(true);
   };
 
   return (
-    <article className="cities__card place-card">
+    <article className="cities__card place-card" onMouseOver={handleMouseOver}>
       <div className={`place-card__mark ${!isPremium && 'visually-hidden'}`}>
         <span>Premium</span>
       </div>
-      <div className={`${otherOffer ? 'near-places__image-wrapper' : 'cities__image-wrapper'} ${'place-card__image-wrapper'}`}>
+      <div
+        className={`${
+          otherOffer ? 'near-places__image-wrapper' : 'cities__image-wrapper'
+        } ${'place-card__image-wrapper'}`}
+      >
         <Link to="#">
-          <img className="place-card__image" src={previewImage} width="260" height="200" alt="Place foto"/>
+          <img
+            className="place-card__image"
+            src={previewImage}
+            width="260"
+            height="200"
+            alt="Place foto"
+          />
         </Link>
       </div>
       <div className="place-card__info">
@@ -44,11 +72,18 @@ function OfferCard(props: OfferCardProps): JSX.Element{
             <b className="place-card__price-value">&euro;{price}</b>
             <span className="place-card__price-text">&#47;&nbsp;night</span>
           </div>
-          <button className={`place-card__bookmark-button button ${isFavorite && 'place-card__bookmark-button--active'}`} type="button">
+          <button
+            className={`place-card__bookmark-button button ${
+              isFavorite && 'place-card__bookmark-button--active'
+            }`}
+            type="button"
+          >
             <svg className="place-card__bookmark-icon" width="18" height="19">
               <use xlinkHref="#icon-bookmark"></use>
             </svg>
-            <span className="visually-hidden">`${otherOffer ? 'In' : 'To'} ${'bookmarks'}</span>
+            <span className="visually-hidden">
+              `${otherOffer ? 'In' : 'To'} ${'bookmarks'}
+            </span>
           </button>
         </div>
         <div className="place-card__rating rating">
