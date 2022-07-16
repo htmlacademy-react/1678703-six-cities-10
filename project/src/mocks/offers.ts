@@ -1,6 +1,6 @@
 import {Offers} from '../types/offer';
 
-export const offers: Offers[] = [
+export const offers: Offers = [
   {
     'bedrooms': 3,
     'city': {
@@ -65,7 +65,7 @@ export const offers: Offers[] = [
     },
     'maxAdults': 4,
     'previewImage': 'img/apartment-03.jpg',
-    'price': 120,
+    'price': 121,
     'rating': 3.2,
     'title': 'at great location',
     'type': 'apartment'
@@ -133,7 +133,7 @@ export const offers: Offers[] = [
     },
     'maxAdults': 4,
     'previewImage': 'img/apartment-01.jpg',
-    'price': 120,
+    'price': 123,
     'rating': 1.4,
     'title': 'Beautiful',
     'type': 'apartment'

@@ -1,12 +1,18 @@
 import OffersList from '../../components/offers-list/offers-list';
 import {Link} from 'react-router-dom';
+import {Offers} from '../../types/offer';
+import {City} from '../../components/city/city';
+import {arrayCities} from '../../const';
 
 type MainPageProps = {
   quantityOffers: number;
+  offers: Offers;
 }
 
-function MainPage({quantityOffers}: MainPageProps): JSX.Element{
+export function MainPage(props: MainPageProps): JSX.Element{
 
+  const {quantityOffers, offers} = props;
+  const city = 'Paris';
 
   return (
     <>
@@ -49,43 +55,18 @@ function MainPage({quantityOffers}: MainPageProps): JSX.Element{
           <div className="tabs">
             <section className="locations container">
               <ul className="locations__list tabs__list">
-                <li className="locations__item">
-                  <Link className="locations__item-link tabs__item" to="#">
-                    <span>Paris</span>
-                  </Link>
-                </li>
-                <li className="locations__item">
-                  <Link className="locations__item-link tabs__item" to="#">
-                    <span>Cologne</span>
-                  </Link>
-                </li>
-                <li className="locations__item">
-                  <Link className="locations__item-link tabs__item" to="#">
-                    <span>Brussels</span>
-                  </Link>
-                </li>
-                <li className="locations__item">
-                  <Link className="locations__item-link tabs__item tabs__item--active" to="#">
-                    <span>Amsterdam</span>
-                  </Link>
-                </li>
-                <li className="locations__item">
-                  <Link className="locations__item-link tabs__item" to="#">
-                    <span>Hamburg</span>
-                  </Link>
-                </li>
-                <li className="locations__item">
-                  <Link className="locations__item-link tabs__item" to="#">
-                    <span>Dusseldorf</span>
-                  </Link>
-                </li>
+
+                {arrayCities.map((element) => (
+                  <City key={element.name} city={element.name} activ={element.name === city}/>
+                ))}
+
               </ul>
             </section>
           </div>
           <div className="cities">
             <div className="cities__places-container container">
 
-              <OffersList quantityOffers={quantityOffers}/>
+              <OffersList quantityOffers={quantityOffers} offers ={offers}/>
 
             </div>
           </div>
@@ -94,5 +75,3 @@ function MainPage({quantityOffers}: MainPageProps): JSX.Element{
     </>
   );
 }
-
-export default MainPage;

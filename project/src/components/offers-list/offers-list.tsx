@@ -1,12 +1,16 @@
 import OfferCard from '../offer-card/offer-card';
+import {Offers} from '../../types/offer';
 
 
 type OffersListProps = {
   quantityOffers: number;
+  offers: Offers;
 }
 
 
-function OffersList({quantityOffers}: OffersListProps): JSX.Element{
+function OffersList(props: OffersListProps): JSX.Element{
+
+  const {quantityOffers, offers} = props;
 
   return (
     <>
@@ -30,12 +34,9 @@ function OffersList({quantityOffers}: OffersListProps): JSX.Element{
         </form>
         <div className="cities__places-list places__list tabs__content">
 
-          <OfferCard />
-          <OfferCard />
-          <OfferCard />
-          <OfferCard />
-          <OfferCard />
-          <OfferCard />
+          {offers.map((offer) => (
+            <OfferCard key={offer.id} offer={offer}/>
+          ))}
 
         </div>
       </section>
