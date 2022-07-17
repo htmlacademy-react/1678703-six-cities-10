@@ -1,16 +1,20 @@
-import React from "react";
-import {reviewPropTypes} from "../../prop-types-site";
-import {getRating} from '../../const';
-import dayjs from "dayjs";
+import {getRating} from '../../utils';
+import dayjs from 'dayjs';
+import {ReviewType} from '../../types/offer';
 
-const Reviews = (props) => {
+
+type ReviewsProps = {
+  review: ReviewType;
+};
+
+export function Review(props: ReviewsProps): JSX.Element {
 
   const {review} = props;
   const {user, rating, comment, date} = review;
   const {avatarUrl, name} = user;
   const ratingStyle = getRating(rating);
 
-  const monthDay = dayjs(date).format(`MMM DD`);
+  const monthDay = dayjs(date).format('MMM DD');
 
   return (
     <li className="reviews__item">
@@ -42,10 +46,4 @@ const Reviews = (props) => {
       </div>
     </li>
   );
-};
-
-Reviews.propTypes = {
-  review: reviewPropTypes,
-};
-
-export default Reviews;
+}

@@ -1,62 +1,47 @@
-import React, {useEffect} from "react";
-import Reviews from "../reviews/reviews";
-import {reviewPropTypes} from "../../prop-types-site";
-import PropTypes from 'prop-types';
-import {connect} from "react-redux";
-import {fetchCommentsOffer} from "../../services/api-actions";
+// import {useEffect} from 'react';
+import {Review} from '../review/review';
+import {ReviewType} from '../../types/offer';
 
-const ReviewsList = (props) => {
 
-  const {commentsOffer, onLoadCommentsOffer, commentsId, id} = props;
+type ReviewsListProps = {
+  // id: number;
+};
 
-  useEffect(() => {
-    if (id !== commentsId) {
-      onLoadCommentsOffer(id);
-    }
-  }, []);
+type Comments = ReviewType[];
+
+export function ReviewsList(props: ReviewsListProps): JSX.Element {
+
+  // const {id} = props;
+  const commentsOffer: Comments = [];
+  // useEffect(() => {
+  //   if (id !== commentsId) {
+  //     onLoadCommentsOffer(id);
+  //   }
+  // }, []);
 
   const getReviewsComponent = () => {
     if (commentsOffer.length === 0) {
-      return ``;
+      return '';
     }
     return commentsOffer.map((comment) => (
-      <Reviews key={`${comment.id}-${comment.date}`} review={comment} />
-    ))
-  }
+      <Review key={`${comment.id}-${comment.date}`} review={comment}/>
+    ));
+  };
   // console.log('222', commentsOffer)
 
-  const commentsQuantity = commentsOffer.length !== 0 ? `${commentsOffer.length}` : ``;
+  const commentsQuantity = commentsOffer.length !== 0 ? `${commentsOffer.length}` : '';
 
   return (
     <>
-    <h2 className="reviews__title">
-      Reviews &middot;{` `}
-      <span className="reviews__amount">{commentsQuantity}</span>
-    </h2>
-    <ul className="reviews__list">
-      {getReviewsComponent()}
-    </ul>
+      <h2 className="reviews__title">
+      Reviews &middot;{' '}
+        <span className="reviews__amount">{commentsQuantity}</span>
+      </h2>
+      <ul className="reviews__list">
+        {getReviewsComponent()}
+      </ul>
     </>
   );
-};
+}
 
-ReviewsList.propTypes = {
-  commentsOffer: PropTypes.arrayOf(reviewPropTypes).isRequired,
-  onLoadCommentsOffer: PropTypes.func.isRequired, 
-  commentsId: PropTypes.number.isRequired,
-};
-
-const mapStateToProps = (state) => ({
-  commentsOffer: state.commentsOffer,
-  commentsId: state.commentsId,
-});
-
-const mapDispatchToProps = (dispatch) => ({
-  onLoadCommentsOffer(id) {
-    dispatch(fetchCommentsOffer(id));
-  }
-});
-
-export {ReviewsList};
-export default connect(mapStateToProps, mapDispatchToProps)(ReviewsList);
 

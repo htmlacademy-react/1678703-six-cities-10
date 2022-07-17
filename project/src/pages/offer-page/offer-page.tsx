@@ -3,6 +3,13 @@ import ReviewsList from '../../components/reviews-list/reviews-list';
 import ImagesOffer from '../../components/images-offer/images-offer';
 import { getRating } from '../../utils';
 import {HousingType, AppRoute, QUANTITY_IMAGES} from '../../const';
+import { Offer } from '../../types/offer';
+import {useRef} from 'react';
+import NotFoundPage from '../not-found-page/not-found-page';
+import LoadingScreen from '../../components/loading-screen/loading-screen';
+import {useParams} from 'react-router-dom';
+import OfferCard from '../../components/offer-card/offer-card';
+import { Navigate } from 'react-router-dom';
 
 
 const getImagesSection = (images) => {
@@ -23,11 +30,14 @@ const getImagesSection = (images) => {
 };
 
 
-function OfferPage(): JSX.Element{
+type OfferPageProps = {
+  offer: Offer;
+};
 
-  const {onSubmit, test, rating, emailUser, onLoadOffer, onLoadOtherOffers, loadedOffer, otherOffers, isLoadedOffer, otherOffersId} = props;
 
-  const ratingRef = useRef();
+function OfferPage(props: OfferPageProps): JSX.Element{
+
+  const {offer} = props;
   const commentRef = useRef();
 
   const {id} = useParams();
@@ -35,21 +45,22 @@ function OfferPage(): JSX.Element{
 
   // console.log(`000`, otherOffersId);
 
-  // два эффекта, на оффер и на офферы поблизости
-  useEffect(() => {
-    if (loadedOffer.id !== currentId) {
-      onLoadOffer(currentId);
-    }
-  }, []);
+  // // два эффекта, на оффер и на офферы поблизости
+  // useEffect(() => {
+  //   if (loadedOffer.id !== currentId) {
+  //     onLoadOffer(currentId);
+  //   }
+  // }, []);
 
-  useEffect(() => {
-    if (otherOffersId !== currentId) {
-      onLoadOtherOffers(currentId);
-    }
-  }, []);
+  // useEffect(() => {
+  //   if (otherOffersId !== currentId) {
+  //     onLoadOtherOffers(currentId);
+  //   }
+  // }, []);
 
 
   // по умолчанию true, false ставит диспатч в случае ошибки при загрузке оффера
+  const isLoadedOffer = true;
   if (!isLoadedOffer) {
     return (
       <NotFoundPage />
@@ -57,7 +68,7 @@ function OfferPage(): JSX.Element{
   }
 
   // надпись при загрузке
-  if (loadedOffer.id !== currentId) {
+  if (offer.id !== currentId) {
     return (
       <LoadingScreen />
     );
@@ -70,10 +81,7 @@ function OfferPage(): JSX.Element{
     }
     return otherOffers.map((currentOffer) => (
       <OfferCard
-        key={currentOffer.id}
-        offer={currentOffer}
-        otherOffer
-        onMouseOver={handleMouseOver}
+      onMouseOver={handleMouseOver}
       />
     ));
   };
@@ -86,44 +94,21 @@ function OfferPage(): JSX.Element{
     title,
     type,
     ratingOffer,
-    city,
     images,
-  } = loadedOffer;
+  } = offer;
 
   const count = 0;
 
   const handleRatingClick = (evt) => {
-    // const {name, value} = evt.target;
     evt.preventDefault();
-    // console.log('11', evt.target.value)
-    // console.log('222', ratingRef.current.defaultChecked)
-    // // setUserForm({...userForm, [name]: value});
-    // ratingRef.current.defaultChecked = false;
-    // console.log('33', ratingRef.current.defaultChecked)
-
-    test(Number(evt.target.value));
-    // console.log('22', rating)
   };
 
   const handleFieldChange = (evt) => {
-    // const {name, value} = evt.target;
-    console.log('33', commentRef.current.value);
-    // setUserForm({...userForm, [name]: value});
+    evt.preventDefault();
   };
-
-  // const clearForm = () => {
-  //   ratingRef.current.value = 0;
-  //   commentRef.current.value = '';
-  // };
 
   const handleSubmit = (evt) => {
     evt.preventDefault();
-    onSubmit(id, {
-      rating,
-      comment: commentRef.current.value,
-    });
-    // console.log('222', ratingRef.current.value, commentRef.current.value)
-    // clearForm();
   };
 
   const ratingStyle = getRating(ratingOffer);
@@ -140,12 +125,17 @@ function OfferPage(): JSX.Element{
   const isUser = !!emailUser;
 
   // обработка клика по аватарке
-  const handleAvatarClick = () => emailUser
-    ? history.push(AppRoute.FAVORITES)
-    : history.push(AppRoute.LOGIN);
+  const handleAvatarClick = (evt) => {
+    evt.preventDefault();
+// emailUser
+    // ? return <Navigate to={AppRoute.FAVORITES} />;
+    // : return <Navigate to={AppRoute.LOGIN} />;
+  }
 
-  const handleMouseOver = () => {
-    // setActiveOffer(offer);
+
+
+  const handleMouseOver = (evt) => {
+    evt.preventDefault();
   };
 
 
