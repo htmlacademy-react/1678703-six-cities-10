@@ -52,6 +52,7 @@
     "@types/react-redux": "^7.1.24",
     "@types/react-router-dom": "^5.3.3",
     "axios-mock-adapter": "^1.19.0",
+    "dayjs": "1.11.3",
     "eslint-config-htmlacademy": "^6.0.0",
     "faker": "^5.5.3",
     "redux-devtools-extension": "2.13",
