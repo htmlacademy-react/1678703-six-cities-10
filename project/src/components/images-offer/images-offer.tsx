@@ -1,9 +1,11 @@
 
-import React from "react";
-import PropTypes from 'prop-types';
+
+type ImagesOfferProps = {
+  image: string;
+};
 
 
-const ImagesOffer = (props) => {
+export function ImagesOffer(props: ImagesOfferProps): JSX.Element{
 
   const {image} = props;
 
@@ -16,12 +18,4 @@ const ImagesOffer = (props) => {
       />
     </div>
   );
-};
-
-
-ImagesOffer.propTypes = {
-  image: PropTypes.string.isRequired,
-};
-
-
-export default ImagesOffer;
+}
