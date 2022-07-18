@@ -4,7 +4,7 @@ import { AppRoute, AuthorizationStatus } from '../../const';
 import NotFoundPage from '../../pages/not-found-page/not-found-page';
 import OfferPage from '../../pages/offer-page/offer-page';
 import LoginPage from '../../pages/login-page/login-page';
-import FavoritesPage from '../../pages/favorites-page/favorites-page';
+import {FavoritesPage} from '../../pages/favorites-page/favorites-page';
 import PrivateRoute from '../private-route/private-route';
 import {Offers} from '../../types/offer';
 
@@ -30,7 +30,7 @@ function App(props: AppProps): JSX.Element {
         <Route
           path={AppRoute.Favorites}
           element={
-            <PrivateRoute authorizationStatus={AuthorizationStatus.NoAuth}>
+            <PrivateRoute authorizationStatus={AuthorizationStatus.Auth}>
               <FavoritesPage />
             </PrivateRoute>
           }
@@ -42,3 +42,5 @@ function App(props: AppProps): JSX.Element {
 }
 
 export default App;
+
+//AuthorizationStatus.Auth - TEST!
