@@ -14,7 +14,7 @@ type AppProps = {
   offers: Offers;
 };
 
-function App(props: AppProps): JSX.Element {
+export function App(props: AppProps): JSX.Element {
 
   const {quantityOffers, offers} = props;
 
@@ -40,7 +40,5 @@ function App(props: AppProps): JSX.Element {
     </BrowserRouter>
   );
 }
-
-export default App;
 
 //AuthorizationStatus.Auth - TEST!
