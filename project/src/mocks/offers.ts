@@ -20,7 +20,7 @@ export const offers: Offers = [
       'name': 'Angelina'
     },
     'id': 1,
-    'images': ['img/1.png', 'img/2.png'],
+    'images': ['img/apartment-01.jpg', 'img/apartment-02.jpg', 'img/apartment-03.jpg'],
     'isFavorite': true,
     'isPremium': true,
     'location': {
@@ -29,7 +29,7 @@ export const offers: Offers = [
       'zoom': 8
     },
     'maxAdults': 4,
-    'previewImage': 'img/apartment-01.jpg',
+    'previewImage': 'img/img/apartment-01.jpg',
     'price': 120,
     'rating': 4.8,
     'title': 'Beautiful & luxurious studio at great location',
@@ -55,7 +55,7 @@ export const offers: Offers = [
       'name': 'Angelina'
     },
     'id': 2,
-    'images': ['img/1.png', 'img/2.png'],
+    'images': ['img/apartment-01.jpg', 'img/apartment-02.jpg', 'img/apartment-03.jpg'],
     'isFavorite': true,
     'isPremium': false,
     'location': {
@@ -89,7 +89,7 @@ export const offers: Offers = [
       'name': 'Angelina'
     },
     'id': 3,
-    'images': ['img/1.png', 'img/2.png'],
+    'images': ['img/apartment-01.jpg', 'img/apartment-02.jpg', 'img/apartment-03.jpg'],
     'isFavorite': true,
     'isPremium': true,
     'location': {
@@ -123,7 +123,7 @@ export const offers: Offers = [
       'name': 'Angelina'
     },
     'id': 4,
-    'images': ['img/1.png', 'img/2.png'],
+    'images': ['img/apartment-01.jpg', 'img/apartment-02.jpg', 'img/apartment-03.jpg'],
     'isFavorite': false,
     'isPremium': false,
     'location': {
@@ -132,7 +132,7 @@ export const offers: Offers = [
       'zoom': 8
     },
     'maxAdults': 4,
-    'previewImage': 'img/apartment-01.jpg',
+    'previewImage': 'img/img/apartment-01.jpg',
     'price': 123,
     'rating': 1.4,
     'title': 'Beautiful',

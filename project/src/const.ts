@@ -1,4 +1,5 @@
 import {Cities} from './types/city';
+import { HousingType } from './types/offer';
 
 export enum AppRoute {
   Main = '/',
@@ -9,12 +10,12 @@ export enum AppRoute {
   NotFoundPage = '/not_found'
 }
 
-export enum HousingType {
-  Apartment = 'apartment',
-  Room = 'room',
-  House = 'house',
-  Hotel = 'hotel',
-}
+export const Housing: HousingType = {
+  'apartment': 'Apartment',
+  'room': 'Room',
+  'house': 'House',
+  'hotel': 'Hotel',
+};
 
 export enum SortingType {
   Popular = 'popular',

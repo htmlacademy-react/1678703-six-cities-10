@@ -9,7 +9,7 @@ export function FormOffer(): JSX.Element {
   const {id} = useParams();
 
   // eslint-disable-next-line no-console
-  console.log('11', rating, text, id);
+  console.log('22', rating, text, id);
 
   const handleRatingClick = (evt: MouseEvent<HTMLInputElement>) => {
     setRating(Number((evt.target as HTMLInputElement).value));

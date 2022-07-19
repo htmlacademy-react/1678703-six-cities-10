@@ -1,7 +1,48 @@
-import {Link} from 'react-router-dom';
+import {Link, useParams} from 'react-router-dom';
 import { FormOffer } from '../../components/form-offer/form-offer';
+import { offers } from '../../mocks/offers';
+import { getRating } from '../../utils';
+import { ImagesOffer } from '../../components/images-offer/images-offer';
+import { QUANTITY_IMAGES } from '../../const';
+import NotFoundPage from '../not-found-page/not-found-page';
+// import { Offer } from '../../types/offer';
+
+
+function getImagesSection(images: string[]): JSX.Element{
+  if (images.length !== 0) {
+    const currentImages = images.length >= QUANTITY_IMAGES ? images.slice(0, QUANTITY_IMAGES) : images.slice();
+    return (
+      <div className="property__gallery">
+        {currentImages.map((image) => (
+          <ImagesOffer key={image} image={image} />
+        ))}
+      </div>
+    );
+  }
+  return (
+    <div className="property__gallery">
+    </div>
+  );
+}
+
 
 function OfferPage(): JSX.Element{
+
+  const {id} = useParams();
+  const currentOffer = offers.find((offer) => String(offer.id) === id);
+
+  if (!currentOffer) {
+    return (
+      <NotFoundPage />
+    );
+  }
+  const {isPremium, price, maxAdults, bedrooms, title, type, rating, images} = currentOffer;
+
+  const ratingStyle = getRating(rating);
+  const housingType = type.charAt(0).toUpperCase() + type.slice(1);
+
+  // eslint-disable-next-line no-console
+  console.log('11', images);
 
   return (
     <>
@@ -42,35 +83,20 @@ function OfferPage(): JSX.Element{
         <main className="page__main page__main--property">
           <section className="property">
             <div className="property__gallery-container container">
-              <div className="property__gallery">
-                <div className="property__image-wrapper">
-                  <img className="property__image" src="img/room.jpg" alt="Studio"/>
-                </div>
-                <div className="property__image-wrapper">
-                  <img className="property__image" src="img/apartment-01.jpg" alt="Studio"/>
-                </div>
-                <div className="property__image-wrapper">
-                  <img className="property__image" src="img/apartment-02.jpg" alt="Studio"/>
-                </div>
-                <div className="property__image-wrapper">
-                  <img className="property__image" src="img/apartment-03.jpg" alt="Studio"/>
-                </div>
-                <div className="property__image-wrapper">
-                  <img className="property__image" src="img/studio-01.jpg" alt="Studio"/>
-                </div>
-                <div className="property__image-wrapper">
-                  <img className="property__image" src="img/apartment-01.jpg" alt="Studio"/>
-                </div>
-              </div>
+
+              {getImagesSection(images)}
+
             </div>
             <div className="property__container container">
               <div className="property__wrapper">
-                <div className="property__mark">
-                  <span>Premium</span>
-                </div>
+                {isPremium && (
+                  <div className="property__mark">
+                    <span>Premium</span>
+                  </div>
+                )}
                 <div className="property__name-wrapper">
                   <h1 className="property__name">
-                  Beautiful &amp; luxurious studio at great location
+                    {title}
                   </h1>
                   <button className="property__bookmark-button button" type="button">
                     <svg className="property__bookmark-icon" width="31" height="33">
@@ -81,24 +107,26 @@ function OfferPage(): JSX.Element{
                 </div>
                 <div className="property__rating rating">
                   <div className="property__stars rating__stars">
-                    <span style={{width: '80%'}}></span>
+                    <span style={ratingStyle}></span>
                     <span className="visually-hidden">Rating</span>
                   </div>
-                  <span className="property__rating-value rating__value">4.8</span>
+                  <span className="property__rating-value rating__value">
+                    {rating}
+                  </span>
                 </div>
                 <ul className="property__features">
                   <li className="property__feature property__feature--entire">
-                  Apartment
+                    {housingType}
                   </li>
                   <li className="property__feature property__feature--bedrooms">
-                  3 Bedrooms
+                    {bedrooms} Bedrooms
                   </li>
                   <li className="property__feature property__feature--adults">
-                  Max 4 adults
+                  Max {maxAdults} adults
                   </li>
                 </ul>
                 <div className="property__price">
-                  <b className="property__price-value">&euro;120</b>
+                  <b className="property__price-value">&euro;{price}</b>
                   <span className="property__price-text">&nbsp;night</span>
                 </div>
                 <div className="property__inside">
