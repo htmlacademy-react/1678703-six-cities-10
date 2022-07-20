@@ -1,26 +1,36 @@
 
-import { useState, ChangeEvent, MouseEvent} from 'react';
+import { useState, ChangeEvent, MouseEvent, FormEvent} from 'react';
 import { useParams } from 'react-router-dom';
 
 export function FormOffer(): JSX.Element {
 
-  const [rating, setRating] = useState(0);
-  const [text, setComment] = useState('');
+  // const [rating, setRating] = useState(0);
+  // const [text, setComment] = useState('');
+
+  const [formData, setFormData] = useState({
+    rating: 0,
+    text: '',
+  });
+
   const {id} = useParams();
 
   // eslint-disable-next-line no-console
-  console.log('22', rating, text, id);
+  console.log('rating-text-id: ', formData.rating, formData.text, id);
 
   const handleRatingClick = (evt: MouseEvent<HTMLInputElement>) => {
-    setRating(Number((evt.target as HTMLInputElement).value));
+    setFormData({...formData, 'rating': Number((evt.target as HTMLInputElement).value)});
   };
 
   const handleCommentChange = (evt: ChangeEvent<HTMLTextAreaElement>) => {
-    setComment(evt.target.value);
+    setFormData({...formData, 'text': evt.target.value});
+  };
+
+  const handleCommentSubmit = (evt: FormEvent<HTMLFormElement>) => {
+    evt.preventDefault();
   };
 
   return (
-    <form className="reviews__form form" action="#" method="post">
+    <form className="reviews__form form" action="#" method="post" onSubmit={handleCommentSubmit}>
       <label className="reviews__label form__label" htmlFor="review">Your review</label>
       <div className="reviews__rating-form form__rating">
         <input className="form__rating-input visually-hidden" name="rating" value="5" id="5-stars" type="radio" onClick={handleRatingClick}/>

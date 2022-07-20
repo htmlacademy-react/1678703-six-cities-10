@@ -8,11 +8,12 @@ import {useState} from 'react';
 
 type OfferCardProps = {
   offer: Offer;
+  isOtherOffer: boolean;
 }
 
 
 function OfferCard(props: OfferCardProps): JSX.Element{
-  const { offer } = props;
+  const { offer, isOtherOffer} = props;
   const {
     id,
     price,
@@ -23,7 +24,7 @@ function OfferCard(props: OfferCardProps): JSX.Element{
     rating,
     previewImage,
   } = offer;
-  const otherOffer = false;
+
   const ratingStyle = getRating(rating);
 
   const [navigation, setNavigation] = useState(false);
@@ -47,13 +48,13 @@ function OfferCard(props: OfferCardProps): JSX.Element{
   };
 
   return (
-    <article className="cities__card place-card" onMouseOver={handleMouseOver}>
+    <article className={`${isOtherOffer ? 'near-places__card' : 'cities__card'} ${'place-card'}`} onMouseOver={handleMouseOver}>
       <div className={`place-card__mark ${!isPremium && 'visually-hidden'}`}>
         <span>Premium</span>
       </div>
       <div
         className={`${
-          otherOffer ? 'near-places__image-wrapper' : 'cities__image-wrapper'
+          isOtherOffer ? 'near-places__image-wrapper' : 'cities__image-wrapper'
         } ${'place-card__image-wrapper'}`}
       >
         <Link to="#">
@@ -82,7 +83,7 @@ function OfferCard(props: OfferCardProps): JSX.Element{
               <use xlinkHref="#icon-bookmark"></use>
             </svg>
             <span className="visually-hidden">
-              `${otherOffer ? 'In' : 'To'} ${'bookmarks'}
+              `${isOtherOffer ? 'In' : 'To'} ${'bookmarks'}
             </span>
           </button>
         </div>

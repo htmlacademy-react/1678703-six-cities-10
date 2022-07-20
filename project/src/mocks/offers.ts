@@ -20,7 +20,7 @@ export const offers: Offers = [
       'name': 'Angelina'
     },
     'id': 1,
-    'images': ['img/apartment-01.jpg', 'img/apartment-02.jpg', 'img/apartment-03.jpg'],
+    'images': ['img/apartment-01.jpg', 'img/apartment-02.jpg', 'img/apartment-03.jpg', 'img/apartment-01.jpg', 'img/apartment-02.jpg', 'img/apartment-03.jpg', 'img/apartment-01.jpg', 'img/apartment-02.jpg', 'img/apartment-03.jpg'],
     'isFavorite': true,
     'isPremium': true,
     'location': {
@@ -55,7 +55,7 @@ export const offers: Offers = [
       'name': 'Angelina'
     },
     'id': 2,
-    'images': ['img/apartment-01.jpg', 'img/apartment-02.jpg', 'img/apartment-03.jpg'],
+    'images': ['img/apartment-01.jpg', 'img/apartment-02.jpg', 'img/apartment-03.jpg', 'img/apartment-01.jpg', 'img/apartment-02.jpg', 'img/apartment-03.jpg', 'img/apartment-01.jpg', 'img/apartment-02.jpg', 'img/apartment-03.jpg'],
     'isFavorite': true,
     'isPremium': false,
     'location': {
@@ -89,7 +89,7 @@ export const offers: Offers = [
       'name': 'Angelina'
     },
     'id': 3,
-    'images': ['img/apartment-01.jpg', 'img/apartment-02.jpg', 'img/apartment-03.jpg'],
+    'images': ['img/apartment-01.jpg', 'img/apartment-02.jpg', 'img/apartment-03.jpg', 'img/apartment-01.jpg', 'img/apartment-02.jpg', 'img/apartment-03.jpg', 'img/apartment-01.jpg', 'img/apartment-02.jpg', 'img/apartment-03.jpg'],
     'isFavorite': true,
     'isPremium': true,
     'location': {
@@ -123,7 +123,7 @@ export const offers: Offers = [
       'name': 'Angelina'
     },
     'id': 4,
-    'images': ['img/apartment-01.jpg', 'img/apartment-02.jpg', 'img/apartment-03.jpg'],
+    'images': ['img/apartment-01.jpg', 'img/apartment-02.jpg', 'img/apartment-03.jpg', 'img/apartment-01.jpg', 'img/apartment-02.jpg', 'img/apartment-03.jpg', 'img/apartment-01.jpg', 'img/apartment-02.jpg', 'img/apartment-03.jpg'],
     'isFavorite': false,
     'isPremium': false,
     'location': {
