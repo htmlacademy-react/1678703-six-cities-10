@@ -44,7 +44,7 @@ export enum AuthorizationStatus {
 //   Name = 'Amsterdam'
 // }
 
-export const arrayCities: Cities = [
+export const ArrayCities: Cities = [
   {name: 'Paris',
     id: 1,
     location: {
@@ -99,4 +99,7 @@ export const DEFAULT_CITY = 'Paris';
 export const QUANTITY_IMAGES = 6;
 
 export const TEXT_SIGN_IN = 'Sign In';
+
+export const URL_MARKER_DEFAULT = 'img/pin.svg';
+export const URL_MARKER_CURRENT = 'img/pin-active.svg';
 
