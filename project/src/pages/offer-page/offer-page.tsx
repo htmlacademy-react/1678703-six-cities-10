@@ -36,13 +36,14 @@ function OfferPage(): JSX.Element{
       <NotFoundPage />
     );
   }
-  const {isPremium, price, maxAdults, bedrooms, title, type, rating, images} = currentOffer;
+  const {isPremium, price, maxAdults, bedrooms, title, type, rating, images, goods} = currentOffer;
 
   const ratingStyle = getRating(rating);
   const housingType = type.charAt(0).toUpperCase() + type.slice(1);
+  const isGoods = goods.length !== 0;
 
   // eslint-disable-next-line no-console
-  console.log('11', images);
+  console.log('11', currentOffer);
 
   return (
     <>
@@ -131,38 +132,19 @@ function OfferPage(): JSX.Element{
                 </div>
                 <div className="property__inside">
                   <h2 className="property__inside-title">What&apos;s inside</h2>
+
+                  {isGoods &&
                   <ul className="property__inside-list">
-                    <li className="property__inside-item">
-                    Wi-Fi
-                    </li>
-                    <li className="property__inside-item">
-                    Washing machine
-                    </li>
-                    <li className="property__inside-item">
-                    Towels
-                    </li>
-                    <li className="property__inside-item">
-                    Heating
-                    </li>
-                    <li className="property__inside-item">
-                    Coffee machine
-                    </li>
-                    <li className="property__inside-item">
-                    Baby seat
-                    </li>
-                    <li className="property__inside-item">
-                    Kitchen
-                    </li>
-                    <li className="property__inside-item">
-                    Dishwasher
-                    </li>
-                    <li className="property__inside-item">
-                    Cabel TV
-                    </li>
-                    <li className="property__inside-item">
-                    Fridge
-                    </li>
-                  </ul>
+                    {goods.map((good, currentId) => {
+                      const keyValue = `${currentId}-${good}`;
+                      return (
+                        <li key={keyValue} className="property__inside-item">
+                          {good}
+                        </li>
+                      );
+                    })}
+                  </ul>}
+
                 </div>
                 <div className="property__host">
                   <h2 className="property__host-title">Meet the host</h2>
