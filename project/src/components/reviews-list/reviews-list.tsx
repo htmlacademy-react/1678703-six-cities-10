@@ -1,18 +1,17 @@
 // import {useEffect} from 'react';
 import {Review} from '../review/review';
-import {ReviewType} from '../../types/offer';
-
+import { comments } from '../../mocks/comments';
 
 type ReviewsListProps = {
-  // id: number;
+  id: string | undefined;
 };
 
-type Comments = ReviewType[];
 
 export function ReviewsList(props: ReviewsListProps): JSX.Element {
 
-  // const {id} = props;
-  const commentsOffer: Comments = [];
+  const {id} = props;
+  const commentsOffer = comments.filter((comment) => String(comment.id) === id);
+
   // useEffect(() => {
   //   if (id !== commentsId) {
   //     onLoadCommentsOffer(id);
@@ -23,9 +22,12 @@ export function ReviewsList(props: ReviewsListProps): JSX.Element {
     if (commentsOffer.length === 0) {
       return '';
     }
-    return commentsOffer.map((comment) => (
-      <Review key={`${comment.id}-${comment.date}`} review={comment}/>
-    ));
+    return commentsOffer.map((comment, currentId) => {
+      const keyValue = `${comment}-${currentId}`;
+      return (
+        <Review key={keyValue} review={comment}/>
+      );
+    });
   };
   // console.log('222', commentsOffer)
 
