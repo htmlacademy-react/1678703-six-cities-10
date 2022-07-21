@@ -5,12 +5,17 @@ import {Offers} from '../../types/offer';
 type OffersListProps = {
   quantityOffers: number;
   offers: Offers;
+  onOfferHover: (idOffer: string) => void;
 }
 
 
 function OffersList(props: OffersListProps): JSX.Element{
 
-  const {quantityOffers, offers} = props;
+  const {quantityOffers, offers, onOfferHover} = props;
+
+  const handleOfferHover = (idOffer: string) => {
+    onOfferHover(idOffer);
+  };
 
   return (
     <section className="cities__places places">
@@ -34,7 +39,7 @@ function OffersList(props: OffersListProps): JSX.Element{
       <div className="cities__places-list places__list tabs__content">
 
         {offers.map((offer) => (
-          <OfferCard key={offer.id} offer={offer} isOtherOffer={false}/>
+          <OfferCard key={offer.id} offer={offer} isOtherOffer={false} onOfferCardHover={handleOfferHover}/>
         ))}
 
       </div>

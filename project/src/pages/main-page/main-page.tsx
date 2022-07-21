@@ -1,9 +1,10 @@
 import OffersList from '../../components/offers-list/offers-list';
 import {Link} from 'react-router-dom';
-import {Offers} from '../../types/offer';
+import {Offers, Offer} from '../../types/offer';
 import {City} from '../../components/city/city';
 import {ArrayCities} from '../../const';
 import {Map} from '../../components/map/map';
+import {useState} from 'react';
 
 type MainPageProps = {
   quantityOffers: number;
@@ -14,6 +15,14 @@ export function MainPage(props: MainPageProps): JSX.Element{
 
   const {quantityOffers, offers} = props;
   const city = 'Paris';
+
+  const [selectedOffer, setSelectedOffer] = useState<Offer | undefined>(undefined);
+
+  const handleOfferHover = (idOffer: string) => {
+    const currentOffer = offers.find((offer) => String(offer.id) === idOffer);
+
+    setSelectedOffer(currentOffer);
+  };
 
   return (
     <>
@@ -101,12 +110,12 @@ export function MainPage(props: MainPageProps): JSX.Element{
           </div>
           <div className="cities">
             <div className="cities__places-container container">
-              <OffersList quantityOffers={quantityOffers} offers={offers} />
+              <OffersList quantityOffers={quantityOffers} offers={offers} onOfferHover={handleOfferHover}/>
 
               <div className="cities__right-section">
                 <section className="cities__map map">
 
-                  <Map main offers={offers} city={city}/>
+                  <Map offers={offers} city={city} selectedOffer={selectedOffer}/>
 
                 </section>
               </div>
