@@ -9,11 +9,12 @@ import {useState} from 'react';
 type OfferCardProps = {
   offer: Offer;
   isOtherOffer: boolean;
+  onOfferCardHover: undefined | ((idOffer: string) => void);
 }
 
 
-function OfferCard(props: OfferCardProps): JSX.Element{
-  const { offer, isOtherOffer} = props;
+export function OfferCard(props: OfferCardProps): JSX.Element{
+  const { offer, isOtherOffer, onOfferCardHover} = props;
   const {
     id,
     price,
@@ -28,19 +29,15 @@ function OfferCard(props: OfferCardProps): JSX.Element{
   const ratingStyle = getRating(rating);
 
   const [navigation, setNavigation] = useState(false);
-  const [, setActive] = useState(-1); //запоминает активный оффер
 
   if (navigation) {
     return <Navigate to={AppRoute.Offer + id} />;
   }
 
-  // eslint-disable-next-line no-console
-  // console.log('22', id);
-
   const handleMouseOver = () => {
-    // eslint-disable-next-line no-console
-    // console.log('11', id);
-    setActive(id);
+    if(onOfferCardHover) {
+      onOfferCardHover(String(id));
+    }
   };
 
   const handleCardClick = () => {
@@ -101,5 +98,3 @@ function OfferCard(props: OfferCardProps): JSX.Element{
     </article>
   );
 }
-
-export default OfferCard;

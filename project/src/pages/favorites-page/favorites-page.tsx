@@ -1,7 +1,7 @@
 import {Link} from 'react-router-dom';
 import { offers } from '../../mocks/offers';
 import { Offers } from '../../types/offer';
-import {arrayCities, AppRoute} from '../../const';
+import {ArrayCities, AppRoute} from '../../const';
 import { FavoritesList } from '../../components/favorites-list/favorites-list';
 
 type FavoriteType = {
@@ -16,7 +16,7 @@ const getFavorites = (offersAll: Offers) => {
   const favorites: FavoriteType[] = [];
 
   if (offersFavorite.length !== 0) {
-    for (const city of arrayCities) {
+    for (const city of ArrayCities) {
 
       if (!offersFavorite.find((offer) => offer.city.name === city.name)) {
         continue;

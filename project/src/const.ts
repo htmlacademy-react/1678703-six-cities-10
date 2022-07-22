@@ -35,16 +35,7 @@ export enum AuthorizationStatus {
   Unknown = 'UNKNOWN',
 }
 
-// enum CityMap {
-//   Location = {
-//     latitude: 52.38333,
-//     longitude: 4.9,
-//     zoom: 11,
-//   },
-//   Name = 'Amsterdam'
-// }
-
-export const arrayCities: Cities = [
+export const ArrayCities: Cities = [
   {name: 'Paris',
     id: 1,
     location: {
@@ -71,7 +62,7 @@ export const arrayCities: Cities = [
     location: {
       latitude: 52.37454,
       longitude: 4.897976,
-      zoom: 13,
+      zoom: 10,
     }},
   {name: 'Hamburg',
     id: 5,
@@ -99,4 +90,7 @@ export const DEFAULT_CITY = 'Paris';
 export const QUANTITY_IMAGES = 6;
 
 export const TEXT_SIGN_IN = 'Sign In';
+
+export const URL_MARKER_DEFAULT = 'img/pin.svg';
+export const URL_MARKER_CURRENT = 'img/pin-active.svg';
 

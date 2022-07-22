@@ -6,7 +6,7 @@ import { ImagesOffer } from '../../components/images-offer/images-offer';
 import { QUANTITY_IMAGES } from '../../const';
 import NotFoundPage from '../not-found-page/not-found-page';
 import { ReviewsList } from '../../components/reviews-list/reviews-list';
-import OfferCard from '../../components/offer-card/offer-card';
+import {OfferCard} from '../../components/offer-card/offer-card';
 
 
 function getImagesSection(images: string[]): JSX.Element {
@@ -27,7 +27,9 @@ function getImagesSection(images: string[]): JSX.Element {
   return <div className="property__gallery"></div>;
 }
 
-function OfferPage(): JSX.Element {
+
+export function OfferPage(): JSX.Element {
+
   const { id } = useParams();
   const currentOffer = offers.find((offer) => String(offer.id) === id);
 
@@ -64,7 +66,7 @@ function OfferPage(): JSX.Element {
         key={otherOffer.id}
         offer={otherOffer}
         isOtherOffer
-        // onMouseOver={handleMouseOver}
+        onOfferCardHover={undefined}
       />
     ));
   };
@@ -253,5 +255,3 @@ function OfferPage(): JSX.Element {
     </>
   );
 }
-
-export default OfferPage;

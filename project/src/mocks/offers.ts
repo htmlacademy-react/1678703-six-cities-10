@@ -24,12 +24,12 @@ export const offers: Offers = [
     'isFavorite': true,
     'isPremium': true,
     'location': {
-      'latitude': 52.35514938496378,
-      'longitude': 4.673877537499948,
+      'latitude': 52.3909553943508,
+      'longitude': 4.85309666406198,
       'zoom': 8
     },
     'maxAdults': 4,
-    'previewImage': 'img/img/apartment-01.jpg',
+    'previewImage': 'img/apartment-01.jpg',
     'price': 120,
     'rating': 4.8,
     'title': 'Beautiful & luxurious studio at great location',
@@ -59,8 +59,8 @@ export const offers: Offers = [
     'isFavorite': true,
     'isPremium': false,
     'location': {
-      'latitude': 52.35514938496378,
-      'longitude': 4.673877537499948,
+      'latitude': 52.369553943508,
+      'longitude': 4.85309666406198,
       'zoom': 8
     },
     'maxAdults': 4,
@@ -127,12 +127,12 @@ export const offers: Offers = [
     'isFavorite': false,
     'isPremium': false,
     'location': {
-      'latitude': 52.35514938496378,
-      'longitude': 4.673877537499948,
+      'latitude': 52.3909553943508,
+      'longitude': 4.929309666406198,
       'zoom': 8
     },
     'maxAdults': 4,
-    'previewImage': 'img/img/apartment-01.jpg',
+    'previewImage': 'img/apartment-01.jpg',
     'price': 123,
     'rating': 1.4,
     'title': 'Beautiful',
