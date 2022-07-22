@@ -29,14 +29,10 @@ export function OfferCard(props: OfferCardProps): JSX.Element{
   const ratingStyle = getRating(rating);
 
   const [navigation, setNavigation] = useState(false);
-  // const [, setActive] = useState(-1); //запоминает активный оффер
 
   if (navigation) {
     return <Navigate to={AppRoute.Offer + id} />;
   }
-
-  // eslint-disable-next-line no-console
-  // console.log('22', id);
 
   const handleMouseOver = () => {
     if(onOfferCardHover) {

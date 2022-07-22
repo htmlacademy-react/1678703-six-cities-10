@@ -1,8 +1,6 @@
 import {useEffect, useState, MutableRefObject, useRef} from 'react';
 import { City } from '../types/city';
-// import leaflet from 'leaflet';
 import {Map, TileLayer} from 'leaflet';
-// import { Redirect } from 'react-router-dom';
 
 
 function useMap(mapRef: MutableRefObject<HTMLElement | null>, currentCity: City): Map | null {

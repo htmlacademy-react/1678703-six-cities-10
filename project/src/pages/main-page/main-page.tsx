@@ -14,7 +14,7 @@ type MainPageProps = {
 export function MainPage(props: MainPageProps): JSX.Element{
 
   const {quantityOffers, offers} = props;
-  const city = 'Paris';
+  const city = 'Amsterdam';
 
   const [selectedOffer, setSelectedOffer] = useState<Offer | undefined>(undefined);
 

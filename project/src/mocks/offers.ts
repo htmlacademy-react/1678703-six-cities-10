@@ -29,7 +29,7 @@ export const offers: Offers = [
       'zoom': 8
     },
     'maxAdults': 4,
-    'previewImage': 'img/img/apartment-01.jpg',
+    'previewImage': 'img/apartment-01.jpg',
     'price': 120,
     'rating': 4.8,
     'title': 'Beautiful & luxurious studio at great location',
@@ -132,7 +132,7 @@ export const offers: Offers = [
       'zoom': 8
     },
     'maxAdults': 4,
-    'previewImage': 'img/img/apartment-01.jpg',
+    'previewImage': 'img/apartment-01.jpg',
     'price': 123,
     'rating': 1.4,
     'title': 'Beautiful',
