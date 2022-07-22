@@ -1,17 +1,20 @@
-import {useEffect, useState, MutableRefObject} from 'react';
+import {useEffect, useState, MutableRefObject, useRef} from 'react';
 import { City } from '../types/city';
-import leaflet from 'leaflet';
+// import leaflet from 'leaflet';
+import {Map, TileLayer} from 'leaflet';
+// import { Redirect } from 'react-router-dom';
 
 
 function useMap(mapRef: MutableRefObject<HTMLElement | null>, currentCity: City): Map | null {
 
   const [map, setMap] = useState<Map | null>(null);
+  const isRenderedRef = useRef<boolean>(false);
 
   const cityLocation = currentCity.location;
 
   useEffect(() => {
-    if (mapRef.current !== null && map === null) {
-      const instance = new leaflet.Map(mapRef.current, {
+    if (mapRef.current !== null && !isRenderedRef.current) {
+      const instance = new Map(mapRef.current, {
         center: {
           lat: cityLocation.latitude,
           lng: cityLocation.longitude
@@ -19,7 +22,7 @@ function useMap(mapRef: MutableRefObject<HTMLElement | null>, currentCity: City)
         zoom: cityLocation.zoom,
       });
 
-      const layer = new leaflet.TileLayer(
+      const layer = new TileLayer(
         'https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png',
         {
           attribution:
@@ -30,8 +33,9 @@ function useMap(mapRef: MutableRefObject<HTMLElement | null>, currentCity: City)
       instance.addLayer(layer);
 
       setMap(instance);
+      isRenderedRef.current = true;
     }
-  }, [mapRef, map, city]);
+  }, [mapRef, map, cityLocation]);
 
   return map;
 }

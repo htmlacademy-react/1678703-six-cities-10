@@ -1,5 +1,6 @@
 import {Cities} from './types/city';
 import { HousingType } from './types/offer';
+import { City } from './types/city';
 
 export enum AppRoute {
   Main = '/',
@@ -35,14 +36,15 @@ export enum AuthorizationStatus {
   Unknown = 'UNKNOWN',
 }
 
-// enum CityMap {
-//   Location = {
-//     latitude: 52.38333,
-//     longitude: 4.9,
-//     zoom: 11,
-//   },
-//   Name = 'Amsterdam'
-// }
+export const CityMap: City = {
+  location: {
+    latitude: 52.38333,
+    longitude: 4.9,
+    zoom: 11,
+  },
+  name: 'Amsterdam',
+  id: 4,
+};
 
 export const ArrayCities: Cities = [
   {name: 'Paris',

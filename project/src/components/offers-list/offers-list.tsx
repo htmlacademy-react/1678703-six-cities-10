@@ -1,4 +1,4 @@
-import OfferCard from '../offer-card/offer-card';
+import {OfferCard} from '../offer-card/offer-card';
 import {Offers} from '../../types/offer';
 
 
@@ -9,7 +9,7 @@ type OffersListProps = {
 }
 
 
-function OffersList(props: OffersListProps): JSX.Element{
+export function OffersList(props: OffersListProps): JSX.Element{
 
   const {quantityOffers, offers, onOfferHover} = props;
 
@@ -46,5 +46,3 @@ function OffersList(props: OffersListProps): JSX.Element{
     </section>
   );
 }
-
-export default OffersList;

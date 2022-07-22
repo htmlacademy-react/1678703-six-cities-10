@@ -9,11 +9,11 @@ import {useState} from 'react';
 type OfferCardProps = {
   offer: Offer;
   isOtherOffer: boolean;
-  onOfferCardHover: (idOffer: string) => void;
+  onOfferCardHover: undefined | ((idOffer: string) => void);
 }
 
 
-function OfferCard(props: OfferCardProps): JSX.Element{
+export function OfferCard(props: OfferCardProps): JSX.Element{
   const { offer, isOtherOffer, onOfferCardHover} = props;
   const {
     id,
@@ -39,7 +39,9 @@ function OfferCard(props: OfferCardProps): JSX.Element{
   // console.log('22', id);
 
   const handleMouseOver = () => {
-    onOfferCardHover(String(id));
+    if(onOfferCardHover) {
+      onOfferCardHover(String(id));
+    }
   };
 
   const handleCardClick = () => {
@@ -100,5 +102,3 @@ function OfferCard(props: OfferCardProps): JSX.Element{
     </article>
   );
 }
-
-export default OfferCard;

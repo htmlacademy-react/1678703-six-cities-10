@@ -1,4 +1,4 @@
-import OffersList from '../../components/offers-list/offers-list';
+import {OffersList} from '../../components/offers-list/offers-list';
 import {Link} from 'react-router-dom';
 import {Offers, Offer} from '../../types/offer';
 import {City} from '../../components/city/city';
