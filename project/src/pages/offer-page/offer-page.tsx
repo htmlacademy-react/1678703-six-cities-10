@@ -76,7 +76,7 @@ export function OfferPage(): JSX.Element {
         key={otherOffer.id}
         offer={otherOffer}
         isOtherOffer
-        onOfferCardHover={undefined}
+        onOfferCardHover={() => ''}
       />
     ));
   };

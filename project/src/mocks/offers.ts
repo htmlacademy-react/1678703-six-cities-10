@@ -7,7 +7,7 @@ export const offers: Offers = [
       'location': {
         'latitude': 52.370216,
         'longitude': 4.895168,
-        'zoom': 10
+        'zoom': 13
       },
       'name': 'Amsterdam'
     },
@@ -42,7 +42,7 @@ export const offers: Offers = [
       'location': {
         'latitude': 52.370216,
         'longitude': 4.895168,
-        'zoom': 10
+        'zoom': 13
       },
       'name': 'Amsterdam'
     },
@@ -77,7 +77,7 @@ export const offers: Offers = [
       'location': {
         'latitude': 52.370216,
         'longitude': 4.895168,
-        'zoom': 10
+        'zoom': 13
       },
       'name': 'Amsterdam'
     },
@@ -112,7 +112,7 @@ export const offers: Offers = [
       'location': {
         'latitude': 52.370216,
         'longitude': 4.895168,
-        'zoom': 10
+        'zoom': 13
       },
       'name': 'Amsterdam'
     },
