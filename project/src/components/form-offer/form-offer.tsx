@@ -1,6 +1,6 @@
 
 import { useState, ChangeEvent, MouseEvent, FormEvent} from 'react';
-import { useParams } from 'react-router-dom';
+// import { useParams } from 'react-router-dom';
 
 export function FormOffer(): JSX.Element {
 
@@ -12,10 +12,10 @@ export function FormOffer(): JSX.Element {
     text: '',
   });
 
-  const {id} = useParams();
+  // const {id} = useParams();
 
   // eslint-disable-next-line no-console
-  console.log('rating-text-id: ', formData.rating, formData.text, id);
+  // console.log('rating-text-id: ', formData.rating, formData.text, id);
 
   const handleRatingClick = (evt: MouseEvent<HTMLInputElement>) => {
     setFormData({...formData, 'rating': Number((evt.target as HTMLInputElement).value)});

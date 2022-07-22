@@ -7,9 +7,10 @@ import {Offers, Offer} from '../../types/offer';
 import { ArrayCities } from '../../const';
 
 type MapProps = {
-  city: string;
+  cityOffer: string;
   offers: Offers;
   selectedOffer: Offer | undefined;
+  main: boolean;
 };
 
 const defaultCustomIcon = new Icon({
@@ -25,13 +26,16 @@ const currentCustomIcon = new Icon({
 });
 
 export function Map(props: MapProps): JSX.Element {
-  const {city, offers, selectedOffer} = props;
+  const {cityOffer, offers, selectedOffer, main} = props;
 
   const mapRef = useRef(null);
 
-  const currentCity = ArrayCities.find((value) => value.name === city) || ArrayCities[0];
+  const currentCity = ArrayCities.find((value) => value.name === cityOffer) || ArrayCities[0];
 
   const map = useMap(mapRef, currentCity);
+
+  // eslint-disable-next-line no-console
+  // console.log('11', selectedOffer);
 
   useEffect(() => {
     if (map) {
@@ -52,7 +56,9 @@ export function Map(props: MapProps): JSX.Element {
     }
   }, [map, offers, selectedOffer]);
 
-  return <div style={{height: '500px'}} ref={mapRef}></div>;
+  const getStyleMap = () => main ? {height: '500px'} : {width: '1144px', height: '579px', margin: 'auto'};
+
+  return <div style={getStyleMap()} ref={mapRef}></div>;
 }
 
 
