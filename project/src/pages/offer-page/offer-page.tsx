@@ -52,13 +52,13 @@ export function OfferPage(): JSX.Element {
     city,
   } = currentOffer;
 
-  const cityOffer = city.name;
+  const cityName = city.name;
 
   const ratingStyle = getRating(rating);
   const housingType = type.charAt(0).toUpperCase() + type.slice(1);
   const isGoods = goods.length !== 0;
 
-  const otherOffers = offers.filter((offer) => offer.city.name === cityOffer && offer.id !== Number(currentOffer.id));
+  const otherOffers = offers.filter((offer) => offer.city.name === cityName && offer.id !== Number(currentOffer.id));
 
   const otherOffersMap = otherOffers.slice();
   otherOffersMap.push(currentOffer);
@@ -245,7 +245,7 @@ export function OfferPage(): JSX.Element {
               </div>
             </div>
 
-            <Map offers={otherOffersMap} cityOffer={cityOffer} selectedOffer={currentOffer} main={false}/>
+            <Map offers={otherOffersMap} cityName={cityName} selectedOffer={currentOffer} main={false}/>
 
           </section>
           <div className="container">

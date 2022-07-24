@@ -7,7 +7,7 @@ import {Offers, Offer} from '../../types/offer';
 import { ArrayCities } from '../../const';
 
 type MapProps = {
-  cityOffer: string;
+  cityName: string;
   offers: Offers;
   selectedOffer: Offer | undefined;
   main: boolean;
@@ -26,11 +26,11 @@ const currentCustomIcon = new Icon({
 });
 
 export function Map(props: MapProps): JSX.Element {
-  const {cityOffer, offers, selectedOffer, main} = props;
+  const {cityName, offers, selectedOffer, main} = props;
 
   const mapRef = useRef(null);
 
-  const currentCity = ArrayCities.find((value) => value.name === cityOffer) || ArrayCities[0];
+  const currentCity = ArrayCities.find((value) => value.name === cityName) || ArrayCities[0];
 
   const map = useMap(mapRef, currentCity);
 

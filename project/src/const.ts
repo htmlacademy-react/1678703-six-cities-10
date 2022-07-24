@@ -80,6 +80,10 @@ export const ArrayCities: Cities = [
     }}
 ];
 
+export const ActionType = {
+  CHANGE_CITY: 'changeCity',
+  LOAD_OFFERS: 'loadOffers',
+};
 
 export const PERCENT_RATING = 20;
 
