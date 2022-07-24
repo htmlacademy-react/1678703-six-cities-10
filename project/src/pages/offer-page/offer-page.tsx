@@ -244,11 +244,9 @@ export function OfferPage(): JSX.Element {
                 </section>
               </div>
             </div>
-            <section className="property__map map">
 
-              <Map offers={otherOffersMap} cityOffer={cityOffer} selectedOffer={currentOffer} main={false}/>
+            <Map offers={otherOffersMap} cityOffer={cityOffer} selectedOffer={currentOffer} main={false}/>
 
-            </section>
           </section>
           <div className="container">
             <section className="near-places places">

@@ -114,11 +114,9 @@ export function MainPage(props: MainPageProps): JSX.Element{
               <OffersList quantityOffers={quantityOffers} offers={currentOffers} onOfferHover={handleOfferHover}/>
 
               <div className="cities__right-section">
-                <section className="cities__map map">
 
-                  <Map offers={currentOffers} cityOffer={cityOffer} selectedOffer={selectedOffer} main/>
+                <Map offers={currentOffers} cityOffer={cityOffer} selectedOffer={selectedOffer} main/>
 
-                </section>
               </div>
             </div>
           </div>

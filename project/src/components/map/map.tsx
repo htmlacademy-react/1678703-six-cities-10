@@ -35,7 +35,7 @@ export function Map(props: MapProps): JSX.Element {
   const map = useMap(mapRef, currentCity);
 
   // eslint-disable-next-line no-console
-  // console.log('11', selectedOffer);
+  // console.log('11', main);
 
   useEffect(() => {
     if (map) {
@@ -56,9 +56,7 @@ export function Map(props: MapProps): JSX.Element {
     }
   }, [map, offers, selectedOffer]);
 
-  const getStyleMap = () => main ? {height: '500px'} : {width: '1144px', height: '579px', margin: 'auto'};
-
-  return <div style={getStyleMap()} ref={mapRef}></div>;
+  return <section className={main ? 'cities__map map' : 'property__map map'} ref={mapRef}></section>;
 }
 
 
