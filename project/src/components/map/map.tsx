@@ -7,31 +7,35 @@ import {Offers, Offer} from '../../types/offer';
 import { ArrayCities } from '../../const';
 
 type MapProps = {
-  city: string;
+  cityOffer: string;
   offers: Offers;
   selectedOffer: Offer | undefined;
+  main: boolean;
 };
 
 const defaultCustomIcon = new Icon({
   iconUrl: URL_MARKER_DEFAULT,
-  iconSize: [40, 40],
-  iconAnchor: [20, 40]
+  iconSize: [30, 45],
+  iconAnchor: [15, 45]
 });
 
 const currentCustomIcon = new Icon({
   iconUrl: URL_MARKER_CURRENT,
-  iconSize: [40, 40],
-  iconAnchor: [20, 40]
+  iconSize: [30, 45],
+  iconAnchor: [15, 45]
 });
 
 export function Map(props: MapProps): JSX.Element {
-  const {city, offers, selectedOffer} = props;
+  const {cityOffer, offers, selectedOffer, main} = props;
 
   const mapRef = useRef(null);
 
-  const currentCity = ArrayCities.find((value) => value.name === city) || ArrayCities[0];
+  const currentCity = ArrayCities.find((value) => value.name === cityOffer) || ArrayCities[0];
 
   const map = useMap(mapRef, currentCity);
+
+  // eslint-disable-next-line no-console
+  // console.log('11', main);
 
   useEffect(() => {
     if (map) {
@@ -52,7 +56,7 @@ export function Map(props: MapProps): JSX.Element {
     }
   }, [map, offers, selectedOffer]);
 
-  return <div style={{height: '500px'}} ref={mapRef}></div>;
+  return <section className={main ? 'cities__map map' : 'property__map map'} ref={mapRef}></section>;
 }
 
 

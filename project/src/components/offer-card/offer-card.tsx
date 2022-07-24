@@ -9,7 +9,7 @@ import {useState} from 'react';
 type OfferCardProps = {
   offer: Offer;
   isOtherOffer: boolean;
-  onOfferCardHover: undefined | ((idOffer: string) => void);
+  onOfferCardHover: (idOffer: string) => void;
 }
 
 
@@ -35,9 +35,11 @@ export function OfferCard(props: OfferCardProps): JSX.Element{
   }
 
   const handleMouseOver = () => {
-    if(onOfferCardHover) {
-      onOfferCardHover(String(id));
-    }
+    onOfferCardHover(String(id));
+  };
+
+  const handleMouseOut = () => {
+    onOfferCardHover('');
   };
 
   const handleCardClick = () => {
@@ -45,7 +47,7 @@ export function OfferCard(props: OfferCardProps): JSX.Element{
   };
 
   return (
-    <article className={`${isOtherOffer ? 'near-places__card' : 'cities__card'} ${'place-card'}`} onMouseOver={handleMouseOver}>
+    <article className={`${isOtherOffer ? 'near-places__card' : 'cities__card'} ${'place-card'}`} onMouseOver={handleMouseOver} onMouseOut={handleMouseOut}>
       <div className={`place-card__mark ${!isPremium && 'visually-hidden'}`}>
         <span>Premium</span>
       </div>

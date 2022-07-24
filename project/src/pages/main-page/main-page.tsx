@@ -14,12 +14,13 @@ type MainPageProps = {
 export function MainPage(props: MainPageProps): JSX.Element{
 
   const {quantityOffers, offers} = props;
-  const city = 'Amsterdam';
+  const cityOffer = 'Amsterdam';
+  const currentOffers = offers.filter((offer) => offer.city.name === cityOffer);
 
   const [selectedOffer, setSelectedOffer] = useState<Offer | undefined>(undefined);
 
   const handleOfferHover = (idOffer: string) => {
-    const currentOffer = offers.find((offer) => String(offer.id) === idOffer);
+    const currentOffer = currentOffers.find((offer) => String(offer.id) === idOffer);
 
     setSelectedOffer(currentOffer);
   };
@@ -102,7 +103,7 @@ export function MainPage(props: MainPageProps): JSX.Element{
                   <City
                     key={element.name}
                     city={element.name}
-                    activ={element.name === city}
+                    activ={element.name === cityOffer}
                   />
                 ))}
               </ul>
@@ -110,14 +111,12 @@ export function MainPage(props: MainPageProps): JSX.Element{
           </div>
           <div className="cities">
             <div className="cities__places-container container">
-              <OffersList quantityOffers={quantityOffers} offers={offers} onOfferHover={handleOfferHover}/>
+              <OffersList quantityOffers={quantityOffers} offers={currentOffers} onOfferHover={handleOfferHover}/>
 
               <div className="cities__right-section">
-                <section className="cities__map map">
 
-                  <Map offers={offers} city={city} selectedOffer={selectedOffer}/>
+                <Map offers={currentOffers} cityOffer={cityOffer} selectedOffer={selectedOffer} main/>
 
-                </section>
               </div>
             </div>
           </div>

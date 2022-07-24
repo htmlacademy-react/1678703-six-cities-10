@@ -7,6 +7,7 @@ import { QUANTITY_IMAGES } from '../../const';
 import NotFoundPage from '../not-found-page/not-found-page';
 import { ReviewsList } from '../../components/reviews-list/reviews-list';
 import {OfferCard} from '../../components/offer-card/offer-card';
+import { Map } from '../../components/map/map';
 
 
 function getImagesSection(images: string[]): JSX.Element {
@@ -48,14 +49,23 @@ export function OfferPage(): JSX.Element {
     goods,
     host,
     description,
-    city
+    city,
   } = currentOffer;
+
+  const cityOffer = city.name;
 
   const ratingStyle = getRating(rating);
   const housingType = type.charAt(0).toUpperCase() + type.slice(1);
   const isGoods = goods.length !== 0;
 
-  const otherOffers = offers.filter((offer) => offer.city === city);
+  const otherOffers = offers.filter((offer) => offer.city.name === cityOffer && offer.id !== Number(currentOffer.id));
+
+  const otherOffersMap = otherOffers.slice();
+  otherOffersMap.push(currentOffer);
+  // eslint-disable-next-line no-console
+  // console.log('11', otherOffers.length);
+
+  // otherOffers.push(currentOffer);
 
   const getOtherOffersComponent = () => {
     if (otherOffers.length === 0) {
@@ -66,13 +76,11 @@ export function OfferPage(): JSX.Element {
         key={otherOffer.id}
         offer={otherOffer}
         isOtherOffer
-        onOfferCardHover={undefined}
+        onOfferCardHover={() => ''}
       />
     ));
   };
 
-  // eslint-disable-next-line no-console
-  console.log('11', id);
 
   return (
     <>
@@ -236,7 +244,9 @@ export function OfferPage(): JSX.Element {
                 </section>
               </div>
             </div>
-            <section className="property__map map"></section>
+
+            <Map offers={otherOffersMap} cityOffer={cityOffer} selectedOffer={currentOffer} main={false}/>
+
           </section>
           <div className="container">
             <section className="near-places places">
