@@ -6,12 +6,13 @@ type OffersListProps = {
   quantityOffers: number;
   offers: Offers;
   onOfferHover: (idOffer: string) => void;
+  cityName: string;
 }
 
 
 export function OffersList(props: OffersListProps): JSX.Element{
 
-  const {quantityOffers, offers, onOfferHover} = props;
+  const {quantityOffers, offers, onOfferHover, cityName} = props;
 
   const handleOfferHover = (idOffer: string) => {
     onOfferHover(idOffer);
@@ -20,7 +21,7 @@ export function OffersList(props: OffersListProps): JSX.Element{
   return (
     <section className="cities__places places">
       <h2 className="visually-hidden">Places</h2>
-      <b className="places__found">{quantityOffers} places to stay in Amsterdam</b>
+      <b className="places__found">{quantityOffers} places to stay in {cityName}</b>
       <form className="places__sorting" action="#" method="get">
         <span className="places__sorting-caption">Sort by</span>
         <span className="places__sorting-type" tabIndex={0}>

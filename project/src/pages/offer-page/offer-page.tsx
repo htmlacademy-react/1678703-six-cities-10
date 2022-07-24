@@ -62,10 +62,6 @@ export function OfferPage(): JSX.Element {
 
   const otherOffersMap = otherOffers.slice();
   otherOffersMap.push(currentOffer);
-  // eslint-disable-next-line no-console
-  // console.log('11', otherOffers.length);
-
-  // otherOffers.push(currentOffer);
 
   const getOtherOffersComponent = () => {
     if (otherOffers.length === 0) {

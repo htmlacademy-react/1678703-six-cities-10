@@ -124,7 +124,7 @@ export function MainPage(): JSX.Element{
           </div>
           <div className="cities">
             <div className="cities__places-container container">
-              <OffersList quantityOffers={quantityOffers} offers={selectedOffers} onOfferHover={handleOfferHover}/>
+              <OffersList quantityOffers={quantityOffers} offers={selectedOffers} onOfferHover={handleOfferHover} cityName={cityName}/>
 
               <div className="cities__right-section">
 

@@ -1,4 +1,5 @@
 import {Link} from 'react-router-dom';
+import {MouseEvent} from 'react';
 
 type CityProps = {
   city: string;
@@ -12,10 +13,10 @@ export function City (props: CityProps): JSX.Element {
 
   const activClassName = activ ? 'tabs__item--active' : '';
 
-  const handleChangeCity = (evt: any) => {
-    onChangeCity(evt.target.textContent);
-    // eslint-disable-next-line no-console
-    // console.log('111', activ);
+  const handleChangeCity = (evt: MouseEvent<HTMLLIElement>) => {
+    const selectedCity = evt.target as HTMLLIElement;
+
+    onChangeCity(selectedCity ? selectedCity.textContent as string : '');
   };
 
   return (

@@ -14,7 +14,7 @@ export const reducer = createReducer(initialState, (builder) => {
     .addCase(changeCity, (state, action) => {
 
       // eslint-disable-next-line no-console
-      console.log('333', action.payload);
+      // console.log('333', action.payload);
       state.city = action.payload;
     })
     .addCase(loadOffers, (state, action) => {
