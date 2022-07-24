@@ -33,7 +33,7 @@ export function useMap(mapRef: MutableRefObject<HTMLElement | null>, currentCity
       setMap(instance);
       isRenderedRef.current = true;
     }
-  }, [mapRef, map, cityLocation]);
+  }, [mapRef]);
 
   return map;
 }
