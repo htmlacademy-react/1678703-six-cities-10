@@ -1,17 +1,32 @@
-import {useEffect, useState, MutableRefObject, useRef} from 'react';
+import {useEffect, useState, MutableRefObject, } from 'react';
 import { City } from '../types/city';
 import {Map, TileLayer} from 'leaflet';
 
 
-function useMap(mapRef: MutableRefObject<HTMLElement | null>, currentCity: City): Map | null {
+export function useMap(mapRef: MutableRefObject<HTMLElement | null>, currentCity: City): Map | null {
 
   const [map, setMap] = useState<Map | null>(null);
-  const isRenderedRef = useRef<boolean>(false);
+  // const isRenderedRef = useRef<boolean>(false);useRef
 
-  const cityLocation = currentCity.location;
+
+  // let prevCity: City | null = null;
+
 
   useEffect(() => {
-    if (mapRef.current !== null && !isRenderedRef.current) {
+
+    // eslint-disable-next-line no-console
+    console.log('22', currentCity.name);
+
+    // if(map !== currentCity) {
+    //   isRenderedRef.current = false; && !isRenderedRef.current
+    // }
+
+    const cityLocation = currentCity.location;
+    if (mapRef.current !== null) {
+
+      // eslint-disable-next-line no-console
+      console.log('33', mapRef.current);
+
       const instance = new Map(mapRef.current, {
         center: {
           lat: cityLocation.latitude,
@@ -31,11 +46,21 @@ function useMap(mapRef: MutableRefObject<HTMLElement | null>, currentCity: City)
       instance.addLayer(layer);
 
       setMap(instance);
-      isRenderedRef.current = true;
+
+      // isRenderedRef.current = true;
+      // prevCity = currentCity;
+
+    // eslint-disable-next-line no-console
+    // console.log('33', map);
     }
-  }, [mapRef, map, cityLocation]);
+    return () => {
+      // if(mapRef.current !== null){
+      // mapRef.current = null;
+      // }
+      // setMap(null);
+    };
+
+  }, [mapRef, currentCity]);
 
   return map;
 }
-
-export default useMap;

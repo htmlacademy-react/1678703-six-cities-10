@@ -3,7 +3,7 @@ import {Link} from 'react-router-dom';
 import {Offer} from '../../types/offer';
 import {City} from '../../components/city/city';
 import {ArrayCities} from '../../const';
-import {Map} from '../../components/map/map';
+import {MapOffers} from '../../components/map/map-offers';
 import {useState} from 'react';
 import {useAppDispatch, useAppSelector} from '../../hooks/index';
 import {changeCity} from '../../store/action';
@@ -128,7 +128,7 @@ export function MainPage(): JSX.Element{
 
               <div className="cities__right-section">
 
-                <Map offers={selectedOffers} cityName={cityName} selectedOffer={selectedOffer} main/>
+                <MapOffers offers={selectedOffers} cityName={cityName} selectedOffer={selectedOffer} main/>
 
               </div>
             </div>

@@ -7,7 +7,7 @@ import { QUANTITY_IMAGES } from '../../const';
 import NotFoundPage from '../not-found-page/not-found-page';
 import { ReviewsList } from '../../components/reviews-list/reviews-list';
 import {OfferCard} from '../../components/offer-card/offer-card';
-import { Map } from '../../components/map/map';
+import { MapOffers } from '../../components/map/map-offers';
 
 
 function getImagesSection(images: string[]): JSX.Element {
@@ -241,7 +241,7 @@ export function OfferPage(): JSX.Element {
               </div>
             </div>
 
-            <Map offers={otherOffersMap} cityName={cityName} selectedOffer={currentOffer} main={false}/>
+            <MapOffers offers={otherOffersMap} cityName={cityName} selectedOffer={currentOffer} main={false}/>
 
           </section>
           <div className="container">
