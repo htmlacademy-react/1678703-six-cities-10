@@ -169,8 +169,8 @@ export const offers: Offers = [
       'zoom': 8
     },
     'maxAdults': 2,
-    'previewImage': 'img/apartment-02.jpg',
-    'price': 122,
+    'previewImage': 'img/apartment-01.jpg',
+    'price': 125,
     'rating': 2.1,
     'title': 'luxurious studio at great location',
     'type': 'apartment'
@@ -205,7 +205,7 @@ export const offers: Offers = [
     'maxAdults': 2,
     'previewImage': 'img/apartment-02.jpg',
     'price': 122,
-    'rating': 2.1,
+    'rating': 3.3,
     'title': 'luxurious studio at great location',
     'type': 'apartment'
   },
@@ -237,9 +237,9 @@ export const offers: Offers = [
       'zoom': 8
     },
     'maxAdults': 2,
-    'previewImage': 'img/apartment-02.jpg',
-    'price': 122,
-    'rating': 2.1,
+    'previewImage': 'img/apartment-03.jpg',
+    'price': 120,
+    'rating': 4.1,
     'title': 'luxurious studio at great location',
     'type': 'apartment'
   }

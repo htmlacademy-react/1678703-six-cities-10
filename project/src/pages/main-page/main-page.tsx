@@ -1,4 +1,4 @@
-import {OffersList} from '../../components/offers-list/offers-list';
+import {OffersListMain} from '../../components/offers-list-main/offers-list-main';
 import {Link} from 'react-router-dom';
 import {Offer} from '../../types/offer';
 import {City} from '../../components/city/city';
@@ -124,7 +124,7 @@ export function MainPage(): JSX.Element{
           </div>
           <div className="cities">
             <div className="cities__places-container container">
-              <OffersList quantityOffers={quantityOffers} offers={selectedOffers} onOfferHover={handleOfferHover} cityName={cityName}/>
+              <OffersListMain quantityOffers={quantityOffers} offers={selectedOffers} onOfferHover={handleOfferHover} cityName={cityName}/>
 
               <div className="cities__right-section">
 

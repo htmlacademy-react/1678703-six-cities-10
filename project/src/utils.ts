@@ -1,19 +1,19 @@
 import {SortingType, PERCENT_RATING} from './const';
-import {Offers} from './types/offer';
+import {Offers, Offer} from './types/offer';
 
 let typeLowHigh = true;
 
-function comparePrice (elementA: number, elementB: number) number {
+function comparePrice (elementA: Offer, elementB: Offer) {
   const rankA = +elementA.price;
   const rankB = +elementB.price;
   return typeLowHigh ? rankA - rankB : rankB - rankA;
-};
+}
 
-function compareRated (elementA: number, elementB: number) {
+function compareRated (elementA: Offer, elementB: Offer) {
   const rankA = elementA.rating;
   const rankB = elementB.rating;
   return rankB - rankA;
-};
+}
 
 export const getOffersSorting = (sortingType: string, offers: Offers) => {
   switch (sortingType) {
@@ -32,6 +32,6 @@ export const getOffersSorting = (sortingType: string, offers: Offers) => {
   }
 };
 
-export const getRating = (rating) => ({
+export const getRating = (rating: number) => ({
   width: `${Math.round(rating) * PERCENT_RATING}%`,
 });

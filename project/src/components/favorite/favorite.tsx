@@ -10,7 +10,7 @@ type FavoriteProps = {
 export function Favorite(props: FavoriteProps): JSX.Element {
 
   const {offer} = props;
-  const {price, title, type, rating} = offer;
+  const {previewImage, price, title, type, rating} = offer;
 
   const ratingStyle = getRating(rating);
 
@@ -20,10 +20,10 @@ export function Favorite(props: FavoriteProps): JSX.Element {
         <Link to="#">
           <img
             className="place-card__image"
-            src="img/apartment-small-03.jpg"
+            src={previewImage}
             width="150"
             height="110"
-            alt="Place image"
+            alt="Place"
           />
         </Link>
       </div>
