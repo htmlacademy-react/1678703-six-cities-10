@@ -2,20 +2,20 @@
 import {offersSorting} from '../../store/action';
 import {useAppDispatch} from '../../hooks/index';
 
-type OffersListProps = {
-  onSortingClick: (idOffer: string) => void;
-}
+// type OffersListProps = {
+//   onSortingClick: (idOffer: string) => void;
+// }
 
 
-export function OffersSorting(props: OffersListProps): JSX.Element{
+export function OffersSorting(): JSX.Element{
 
-  const {onSortingClick} = props;
+  // const {onSortingClick} = props;
 
   // const cityName = useAppSelector((state) => state.city);
   const dispatch = useAppDispatch();
 
   const handleSortingClick = (evt: any) => {
-    onSortingClick('');
+    // onSortingClick('');
     // eslint-disable-next-line no-console
     // console.log('222', evt.target.id);
     if(evt.target.id) {

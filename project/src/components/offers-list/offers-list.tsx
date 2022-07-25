@@ -1,6 +1,8 @@
 import {OfferCard} from '../offer-card/offer-card';
 import {Offers} from '../../types/offer';
 import {OffersSorting} from '../offers-sorting/offers-sorting';
+import {useAppSelector} from '../../hooks/index';
+import {getOffersSorting} from '../../utils';
 
 
 type OffersListProps = {
@@ -15,14 +17,18 @@ export function OffersList(props: OffersListProps): JSX.Element{
 
   const {quantityOffers, offers, onOfferHover, cityName} = props;
 
+  const sorting = useAppSelector((state) => state.sorting);
+
+  const sortedOffers = getOffersSorting(sorting, offers);
+
   const handleOfferHover = (idOffer: string) => {
     onOfferHover(idOffer);
   };
 
-  const handleSortingClick = (idOffer1: any) => {
-    // eslint-disable-next-line no-console
-    console.log('222', idOffer1);
-  };
+  // const handleSortingClick = (idOffer1: any) => {
+  //   // eslint-disable-next-line no-console
+  //   console.log('222', idOffer1);
+  // };
 
   return (
     <section className="cities__places places">
@@ -41,11 +47,11 @@ export function OffersList(props: OffersListProps): JSX.Element{
           </svg>
         </span>
 
-        <OffersSorting onSortingClick={handleSortingClick} />
+        <OffersSorting/>
 
       </form>
       <div className="cities__places-list places__list tabs__content">
-        {offers.map((offer) => (
+        {sortedOffers.map((offer) => (
           <OfferCard
             key={offer.id}
             offer={offer}
