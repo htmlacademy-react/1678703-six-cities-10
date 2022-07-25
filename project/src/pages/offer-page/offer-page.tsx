@@ -7,7 +7,7 @@ import { QUANTITY_IMAGES } from '../../const';
 import NotFoundPage from '../not-found-page/not-found-page';
 import { ReviewsList } from '../../components/reviews-list/reviews-list';
 import {OfferCard} from '../../components/offer-card/offer-card';
-import { Map } from '../../components/map/map';
+import { MapOffers } from '../../components/map/map-offers';
 
 
 function getImagesSection(images: string[]): JSX.Element {
@@ -52,20 +52,16 @@ export function OfferPage(): JSX.Element {
     city,
   } = currentOffer;
 
-  const cityOffer = city.name;
+  const cityName = city.name;
 
   const ratingStyle = getRating(rating);
   const housingType = type.charAt(0).toUpperCase() + type.slice(1);
   const isGoods = goods.length !== 0;
 
-  const otherOffers = offers.filter((offer) => offer.city.name === cityOffer && offer.id !== Number(currentOffer.id));
+  const otherOffers = offers.filter((offer) => offer.city.name === cityName && offer.id !== Number(currentOffer.id));
 
   const otherOffersMap = otherOffers.slice();
   otherOffersMap.push(currentOffer);
-  // eslint-disable-next-line no-console
-  // console.log('11', otherOffers.length);
-
-  // otherOffers.push(currentOffer);
 
   const getOtherOffersComponent = () => {
     if (otherOffers.length === 0) {
@@ -245,7 +241,7 @@ export function OfferPage(): JSX.Element {
               </div>
             </div>
 
-            <Map offers={otherOffersMap} cityOffer={cityOffer} selectedOffer={currentOffer} main={false}/>
+            <MapOffers offers={otherOffersMap} cityName={cityName} selectedOffer={currentOffer} main={false}/>
 
           </section>
           <div className="container">

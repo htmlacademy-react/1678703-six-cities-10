@@ -3,7 +3,7 @@ import { City } from '../types/city';
 import {Map, TileLayer} from 'leaflet';
 
 
-function useMap(mapRef: MutableRefObject<HTMLElement | null>, currentCity: City): Map | null {
+export function useMap(mapRef: MutableRefObject<HTMLElement | null>, currentCity: City): Map | null {
 
   const [map, setMap] = useState<Map | null>(null);
   const isRenderedRef = useRef<boolean>(false);
@@ -33,9 +33,7 @@ function useMap(mapRef: MutableRefObject<HTMLElement | null>, currentCity: City)
       setMap(instance);
       isRenderedRef.current = true;
     }
-  }, [mapRef, map, cityLocation]);
+  }, [mapRef]);
 
   return map;
 }
-
-export default useMap;

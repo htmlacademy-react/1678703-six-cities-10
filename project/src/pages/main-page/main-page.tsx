@@ -1,28 +1,40 @@
 import {OffersList} from '../../components/offers-list/offers-list';
 import {Link} from 'react-router-dom';
-import {Offers, Offer} from '../../types/offer';
+import {Offer} from '../../types/offer';
 import {City} from '../../components/city/city';
 import {ArrayCities} from '../../const';
-import {Map} from '../../components/map/map';
+import {MapOffers} from '../../components/map/map-offers';
 import {useState} from 'react';
+import {useAppDispatch, useAppSelector} from '../../hooks/index';
+import {changeCity} from '../../store/action';
 
-type MainPageProps = {
-  quantityOffers: number;
-  offers: Offers;
-}
 
-export function MainPage(props: MainPageProps): JSX.Element{
+export function MainPage(): JSX.Element{
 
-  const {quantityOffers, offers} = props;
-  const cityOffer = 'Amsterdam';
-  const currentOffers = offers.filter((offer) => offer.city.name === cityOffer);
+  const cityName = useAppSelector((state) => state.city);
+
+  // eslint-disable-next-line no-console
+  // console.log('222', cityName);
+
+  const offers = useAppSelector((state) => state.offers);
+  const selectedOffers = offers.filter((offer) => offer.city.name === cityName);
+
+  let quantityOffers = 0;
+  if(selectedOffers) {
+    quantityOffers = selectedOffers.length;
+  }
+
+  const dispatch = useAppDispatch();
 
   const [selectedOffer, setSelectedOffer] = useState<Offer | undefined>(undefined);
 
   const handleOfferHover = (idOffer: string) => {
-    const currentOffer = currentOffers.find((offer) => String(offer.id) === idOffer);
+    const findedOffer = selectedOffers.find((currentOffer) => String(currentOffer.id) === idOffer);
+    setSelectedOffer(findedOffer);
+  };
 
-    setSelectedOffer(currentOffer);
+  const handleChangeCity = (currentCity: string) => {
+    dispatch(changeCity(currentCity));
   };
 
   return (
@@ -103,7 +115,8 @@ export function MainPage(props: MainPageProps): JSX.Element{
                   <City
                     key={element.name}
                     city={element.name}
-                    activ={element.name === cityOffer}
+                    activ={element.name === cityName}
+                    onChangeCity={handleChangeCity}
                   />
                 ))}
               </ul>
@@ -111,11 +124,11 @@ export function MainPage(props: MainPageProps): JSX.Element{
           </div>
           <div className="cities">
             <div className="cities__places-container container">
-              <OffersList quantityOffers={quantityOffers} offers={currentOffers} onOfferHover={handleOfferHover}/>
+              <OffersList quantityOffers={quantityOffers} offers={selectedOffers} onOfferHover={handleOfferHover} cityName={cityName}/>
 
               <div className="cities__right-section">
 
-                <Map offers={currentOffers} cityOffer={cityOffer} selectedOffer={selectedOffer} main/>
+                <MapOffers offers={selectedOffers} cityName={cityName} selectedOffer={selectedOffer} main/>
 
               </div>
             </div>
