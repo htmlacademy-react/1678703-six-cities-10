@@ -83,6 +83,7 @@ export const ArrayCities: Cities = [
 export const ActionType = {
   CHANGE_CITY: 'changeCity',
   LOAD_OFFERS: 'loadOffers',
+  OFFERS_SORTING: 'offersSorting',
 };
 
 export const PERCENT_RATING = 20;
