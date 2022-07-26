@@ -21,9 +21,6 @@ const getFavorites = (offersAll: Offers) => {
       if (!offersFavorite.find((offer) => offer.city.name === city.name)) {
         continue;
       }
-      // eslint-disable-next-line no-console
-      // console.log('11', city);
-
       favorites.push({
         city: city.name,
         id: city.id,
@@ -71,9 +68,6 @@ export function FavoritesPage(): JSX.Element{
 
   const offersFavorite = getFavorites(offers);
   const emailUser = '888@bk.ru';//TEST!
-  // offersFavorite = [];
-  // eslint-disable-next-line no-console
-  // console.log(offersFavorite);
 
   return (
     <>

@@ -8,6 +8,9 @@ import NotFoundPage from '../not-found-page/not-found-page';
 import { ReviewsList } from '../../components/reviews-list/reviews-list';
 import {OfferCard} from '../../components/offer-card/offer-card';
 import { MapOffers } from '../../components/map/map-offers';
+import {AppRoute} from '../../const';
+import {Navigate} from 'react-router-dom';
+import {useState} from 'react';
 
 
 function getImagesSection(images: string[]): JSX.Element {
@@ -31,6 +34,7 @@ function getImagesSection(images: string[]): JSX.Element {
 
 export function OfferPage(): JSX.Element {
 
+  const [navigation, setNavigation] = useState(false);
   const { id } = useParams();
   const currentOffer = offers.find((offer) => String(offer.id) === id);
 
@@ -62,6 +66,15 @@ export function OfferPage(): JSX.Element {
 
   const otherOffersMap = otherOffers.slice();
   otherOffersMap.push(currentOffer);
+
+
+  if (navigation) {
+    return <Navigate to={AppRoute.Main} />;
+  }
+
+  const handleLogoClick = () => {
+    setNavigation(true);
+  };
 
   const getOtherOffersComponent = () => {
     if (otherOffers.length === 0) {
@@ -109,7 +122,7 @@ export function OfferPage(): JSX.Element {
           <div className="container">
             <div className="header__wrapper">
               <div className="header__left">
-                <Link className="header__logo-link" to="#">
+                <Link className="header__logo-link" to="#" onClick={handleLogoClick}>
                   <img
                     className="header__logo"
                     src="img/logo.svg"
