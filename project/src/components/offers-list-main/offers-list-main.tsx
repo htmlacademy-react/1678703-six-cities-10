@@ -1,6 +1,6 @@
 import {Offers} from '../../types/offer';
-import {OffersSorting} from '../offers-sorting/offers-sorting';
 import {OffersList} from '../offers-list/offers-list';
+import {OffersSortingForm} from '../offers-sorting-form/offers-sorting-form';
 
 
 type OffersListMainProps = {
@@ -25,20 +25,8 @@ export function OffersListMain(props: OffersListMainProps): JSX.Element{
       <b className="places__found">
         {quantityOffers} places to stay in {cityName}
       </b>
-      <form className="places__sorting" action="#" method="get">
 
-
-        <span className="places__sorting-caption">Sort by</span>
-        <span className="places__sorting-type" tabIndex={0}>
-          Popular
-          <svg className="places__sorting-arrow" width="7" height="4">
-            <use xlinkHref="#icon-arrow-select"></use>
-          </svg>
-        </span>
-
-        <OffersSorting/>
-
-      </form>
+      <OffersSortingForm/>
 
       <OffersList onOfferListHover={handleOfferHover} offers={offers}/>
 

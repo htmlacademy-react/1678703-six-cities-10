@@ -13,9 +13,6 @@ export function MainPage(): JSX.Element{
 
   const cityName = useAppSelector((state) => state.city);
 
-  // eslint-disable-next-line no-console
-  // console.log('222', cityName);
-
   const offers = useAppSelector((state) => state.offers);
   const selectedOffers = offers.filter((offer) => offer.city.name === cityName);
 

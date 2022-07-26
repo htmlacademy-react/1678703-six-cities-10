@@ -5,7 +5,14 @@ import { SortingType } from '../../const';
 import {MouseEvent} from 'react';
 
 
-export function OffersSorting(): JSX.Element{
+type OffersSortingProps = {
+  onSortingClick: () => void;
+}
+
+
+export function OffersSorting(props: OffersSortingProps): JSX.Element{
+
+  const {onSortingClick} = props;
 
   const dispatch = useAppDispatch();
 
@@ -14,6 +21,8 @@ export function OffersSorting(): JSX.Element{
 
     if(selectedSorting) {
       dispatch(offersSorting(selectedSorting.id));
+
+      onSortingClick();
     }
   };
 
