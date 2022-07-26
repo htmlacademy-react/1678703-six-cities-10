@@ -9,3 +9,7 @@ export const changeCity = createAction(ActionType.CHANGE_CITY, (value) => ({
 export const loadOffers = createAction(ActionType.LOAD_OFFERS, (value) => ({
   payload: value,
 }));
+
+export const offersSorting = createAction(ActionType.OFFERS_SORTING, (value) => ({
+  payload: value,
+}));

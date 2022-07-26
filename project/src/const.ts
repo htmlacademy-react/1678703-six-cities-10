@@ -18,10 +18,10 @@ export const Housing: HousingType = {
 };
 
 export enum SortingType {
-  Popular = 'popular',
-  LowToHigh = 'lowToHigh',
-  HighToLow = 'highToLow',
-  TopRated = 'topRated',
+  Popular = 'Popular',
+  LowToHigh = 'Price: low to high',
+  HighToLow = 'Price: high to low',
+  TopRated = 'Top rated first',
 }
 
 export enum ApiPaths {
@@ -83,6 +83,7 @@ export const ArrayCities: Cities = [
 export const ActionType = {
   CHANGE_CITY: 'changeCity',
   LOAD_OFFERS: 'loadOffers',
+  OFFERS_SORTING: 'offersSorting',
 };
 
 export const PERCENT_RATING = 20;
