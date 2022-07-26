@@ -1,18 +1,19 @@
 import {Offers} from '../../types/offer';
 import {OffersSorting} from '../offers-sorting/offers-sorting';
-import {OfferList} from '../offers-list/offers-list';
+import {OffersList} from '../offers-list/offers-list';
 
 
 type OffersListMainProps = {
   quantityOffers: number;
   onOfferHover: (idOffer: string) => void;
   cityName: string;
+  offers: Offers;
 }
 
 
 export function OffersListMain(props: OffersListMainProps): JSX.Element{
 
-  const {quantityOffers, onOfferHover, cityName} = props;
+  const {quantityOffers, onOfferHover, cityName, offers} = props;
 
   const handleOfferHover = (idOffer: string) => {
     onOfferHover(idOffer);
@@ -39,7 +40,7 @@ export function OffersListMain(props: OffersListMainProps): JSX.Element{
 
       </form>
 
-      <OfferList onOfferCardHover={handleOfferHover}/>
+      <OffersList onOfferListHover={handleOfferHover} offers={offers}/>
 
     </section>
   );

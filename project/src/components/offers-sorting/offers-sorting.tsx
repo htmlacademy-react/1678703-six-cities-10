@@ -2,25 +2,18 @@
 import {offersSorting} from '../../store/action';
 import {useAppDispatch} from '../../hooks/index';
 import { SortingType } from '../../const';
-
-// type OffersListProps = {
-//   onSortingClick: (idOffer: string) => void;
-// }
+import {MouseEvent} from 'react';
 
 
 export function OffersSorting(): JSX.Element{
 
-  // const {onSortingClick} = props;
-
-  // const cityName = useAppSelector((state) => state.city);
   const dispatch = useAppDispatch();
 
-  const handleSortingClick = (evt: any) => {
-    // onSortingClick('');
-    // eslint-disable-next-line no-console
-    // console.log('222', evt.target.id);
-    if(evt.target.id) {
-      dispatch(offersSorting(evt.target.id));
+  const handleSortingClick = (evt: MouseEvent<HTMLUListElement>) => {
+    const selectedSorting = evt.target as HTMLLIElement;
+
+    if(selectedSorting) {
+      dispatch(offersSorting(selectedSorting.id));
     }
   };
 
@@ -41,9 +34,3 @@ export function OffersSorting(): JSX.Element{
     </ul>
   );
 }
-
-
-// ${offersSortingId === 'Popular' ? 'places__option--active' : ''}
-// ${offersSortingId === 'PriceLow' ? 'places__option--active' : ''}
-// ${offersSortingId === 'PriceHigh' ? 'places__option--active' : ''}
-// ${offersSortingId === 'TopRated' ? 'places__option--active' : ''}
