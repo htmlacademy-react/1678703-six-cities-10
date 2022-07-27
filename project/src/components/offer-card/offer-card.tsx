@@ -4,17 +4,18 @@ import {getRating} from '../../utils';
 import {AppRoute} from '../../const';
 import {Navigate} from 'react-router-dom';
 import {useState} from 'react';
+import {useAppSelector, useAppDispatch} from '../../hooks/index';
+import {selectOfferId} from '../../store/action';
 
 
 type OfferCardProps = {
   offer: Offer;
   isOtherOffer: boolean;
-  onOfferCardHover: (idOffer: string) => void;
 }
 
 
 export function OfferCard(props: OfferCardProps): JSX.Element{
-  const { offer, isOtherOffer, onOfferCardHover} = props;
+  const { offer, isOtherOffer, } = props;
   const {
     id,
     price,
@@ -30,21 +31,43 @@ export function OfferCard(props: OfferCardProps): JSX.Element{
 
   const [navigation, setNavigation] = useState(false);
 
+  const isAuthorizedUser = useAppSelector((state) => state.isAuthorizedUser);
+  const dispatch = useAppDispatch();
+
+  // eslint-disable-next-line no-console
+  console.log('11', isAuthorizedUser);
+  // const [isAuthorized, setAuthorized] = useState(true);
+
   if (navigation) {
     return <Navigate to={AppRoute.Offer + id} />;
   }
 
+  // if (!isAuthorized) {
+  //   return <Navigate to={AppRoute.Main} />;
+  // }
+
   const handleMouseOver = () => {
-    onOfferCardHover(String(id));
+    // onOfferCardHover(String(id));
+    dispatch(selectOfferId(id));
   };
 
   const handleMouseOut = () => {
-    onOfferCardHover('');
+    // onOfferCardHover('');
+    dispatch(selectOfferId(id));
   };
 
   const handleCardClick = () => {
     setNavigation(true);
   };
+
+
+  const handleFavoriteStatusClick = () => {
+    // if(!isAuthorizedUser) {
+    //   setAuthorized(false);
+    // }
+    // setFavorite((prevFavorite) => !prevFavorite); //TEST!
+  };
+
 
   return (
     <article className={`${isOtherOffer ? 'near-places__card' : 'cities__card'} ${'place-card'}`} onMouseOver={handleMouseOver} onMouseOut={handleMouseOut}>
@@ -77,6 +100,7 @@ export function OfferCard(props: OfferCardProps): JSX.Element{
               isFavorite && 'place-card__bookmark-button--active'
             }`}
             type="button"
+            onClick={handleFavoriteStatusClick}
           >
             <svg className="place-card__bookmark-icon" width="18" height="19">
               <use xlinkHref="#icon-bookmark"></use>

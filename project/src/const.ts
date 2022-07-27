@@ -84,6 +84,8 @@ export const ActionType = {
   CHANGE_CITY: 'changeCity',
   LOAD_OFFERS: 'loadOffers',
   OFFERS_SORTING: 'offersSorting',
+  AUTHORIZED_USER: 'authorizedUser',
+  SELECT_OFFER_ID: 'selectOfferId',
 };
 
 export const PERCENT_RATING = 20;

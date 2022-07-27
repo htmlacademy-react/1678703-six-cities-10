@@ -85,7 +85,6 @@ export function OfferPage(): JSX.Element {
         key={otherOffer.id}
         offer={otherOffer}
         isOtherOffer
-        onOfferCardHover={() => ''}
       />
     ));
   };
@@ -254,7 +253,7 @@ export function OfferPage(): JSX.Element {
               </div>
             </div>
 
-            <MapOffers offers={otherOffersMap} cityName={cityName} selectedOffer={currentOffer} main={false}/>
+            <MapOffers offers={otherOffersMap} cityName={cityName} currentOffer={currentOffer} main={false}/>
 
           </section>
           <div className="container">

@@ -1,10 +1,10 @@
 import {OffersListMain} from '../../components/offers-list-main/offers-list-main';
 import {Link} from 'react-router-dom';
-import {Offer} from '../../types/offer';
+// import {Offer} from '../../types/offer';
 import {City} from '../../components/city/city';
 import {ArrayCities} from '../../const';
 import {MapOffers} from '../../components/map/map-offers';
-import {useState} from 'react';
+// import {useState} from 'react';
 import {useAppDispatch, useAppSelector} from '../../hooks/index';
 import {changeCity} from '../../store/action';
 
@@ -23,12 +23,12 @@ export function MainPage(): JSX.Element{
 
   const dispatch = useAppDispatch();
 
-  const [selectedOffer, setSelectedOffer] = useState<Offer | undefined>(undefined);
+  // const [selectedOffer, setSelectedOffer] = useState<Offer | undefined>(undefined);
 
-  const handleOfferHover = (idOffer: string) => {
-    const findedOffer = selectedOffers.find((currentOffer) => String(currentOffer.id) === idOffer);
-    setSelectedOffer(findedOffer);
-  };
+  // const handleOfferHover = (idOffer: string) => {
+  //   const findedOffer = selectedOffers.find((currentOffer) => String(currentOffer.id) === idOffer);
+  //   setSelectedOffer(findedOffer);
+  // };
 
   const handleChangeCity = (currentCity: string) => {
     dispatch(changeCity(currentCity));
@@ -121,11 +121,11 @@ export function MainPage(): JSX.Element{
           </div>
           <div className="cities">
             <div className="cities__places-container container">
-              <OffersListMain quantityOffers={quantityOffers} offers={selectedOffers} onOfferHover={handleOfferHover} cityName={cityName}/>
+              <OffersListMain quantityOffers={quantityOffers} offers={selectedOffers} cityName={cityName}/>
 
               <div className="cities__right-section">
 
-                <MapOffers offers={selectedOffers} cityName={cityName} selectedOffer={selectedOffer} main/>
+                <MapOffers offers={selectedOffers} currentOffer={undefined} cityName={cityName} main/>
 
               </div>
             </div>
