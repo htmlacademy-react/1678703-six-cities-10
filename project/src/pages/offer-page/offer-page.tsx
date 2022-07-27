@@ -108,7 +108,7 @@ export function OfferPage(): JSX.Element {
 
       <div className="page">
 
-        <Header main={false}/>
+        <Header mainPage={false} favoritePage={false}/>
 
         <main className="page__main page__main--property">
           <section className="property">

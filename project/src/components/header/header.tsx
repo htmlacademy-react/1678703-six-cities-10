@@ -2,19 +2,36 @@ import {Link} from 'react-router-dom';
 import {AppRoute} from '../../const';
 import {Navigate} from 'react-router-dom';
 import {useState} from 'react';
+import {useAppSelector} from '../../hooks/index';
 
 
 type HeaderProps = {
-    main: boolean;
+    mainPage: boolean;
+    favoritePage: boolean;
   };
 
 
 export function Header(props: HeaderProps): JSX.Element{
 
-  const {main} = props;
+  const {mainPage, favoritePage} = props;
   const [navigation, setNavigation] = useState(false);
+  const isAuthorizedUser = useAppSelector((state) => !state.isAuthorizedUser);
+  const [isNavigationLogin, setNavigationLogin] = useState(false);
 
-  if (navigation && !main) {
+  if (isNavigationLogin) {
+    if(!isAuthorizedUser) {
+      return <Navigate to={AppRoute.Login} />;
+    }
+    return <Navigate to={AppRoute.Favorites} />;
+  }
+
+  const handleProfileClick = () => {
+    if(!favoritePage) {
+      setNavigationLogin(true);
+    }
+  };
+
+  if (navigation && !mainPage) {
     return <Navigate to={AppRoute.Main} />;
   }
   const handleLogoClick = () => {
@@ -28,7 +45,7 @@ export function Header(props: HeaderProps): JSX.Element{
         <div className="header__wrapper">
           <div className="header__left">
             <Link
-              className={main ? 'header__logo-link header__logo-link--active' : 'header__logo-link'}
+              className={mainPage ? 'header__logo-link header__logo-link--active' : 'header__logo-link'}
               to="#"
               onClick={handleLogoClick}
             >
@@ -41,7 +58,7 @@ export function Header(props: HeaderProps): JSX.Element{
               />
             </Link>
           </div>
-          <nav className="header__nav">
+          <nav className="header__nav" onClick={handleProfileClick}>
             <ul className="header__nav-list">
               <li className="header__nav-item user">
                 <Link
@@ -50,7 +67,7 @@ export function Header(props: HeaderProps): JSX.Element{
                 >
                   <div className="header__avatar-wrapper user__avatar-wrapper"></div>
                   <span className="header__user-name user__name">
-                  Oliver.conner@gmail.com
+                    {isAuthorizedUser ? 'Oliver.conner@gmail.com' : 'Sign in'}
                   </span>
                   <span className="header__favorite-count">3</span>
                 </Link>
