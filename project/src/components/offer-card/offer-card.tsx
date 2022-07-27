@@ -29,43 +29,37 @@ export function OfferCard(props: OfferCardProps): JSX.Element{
 
   const ratingStyle = getRating(rating);
 
-  const [navigation, setNavigation] = useState(false);
+  const [isNavigationOffer, setNavigationOffer] = useState(false);
+  const [isNavigationLogin, setNavigationLogin] = useState(false);
 
   const isAuthorizedUser = useAppSelector((state) => state.isAuthorizedUser);
   const dispatch = useAppDispatch();
 
   // eslint-disable-next-line no-console
-  console.log('11', isAuthorizedUser);
-  // const [isAuthorized, setAuthorized] = useState(true);
+  // console.log('11', isAuthorizedUser);
 
-  if (navigation) {
+  const handleFavoriteStatusClick = () => {
+    setNavigationLogin(true);
+  };
+
+  if (isNavigationOffer) {
     return <Navigate to={AppRoute.Offer + id} />;
   }
 
-  // if (!isAuthorized) {
-  //   return <Navigate to={AppRoute.Main} />;
-  // }
+  if (isNavigationLogin && !isAuthorizedUser) {
+    return <Navigate to={AppRoute.Login} />;
+  }
 
   const handleMouseOver = () => {
-    // onOfferCardHover(String(id));
     dispatch(selectOfferId(id));
   };
 
   const handleMouseOut = () => {
-    // onOfferCardHover('');
     dispatch(selectOfferId(id));
   };
 
   const handleCardClick = () => {
-    setNavigation(true);
-  };
-
-
-  const handleFavoriteStatusClick = () => {
-    // if(!isAuthorizedUser) {
-    //   setAuthorized(false);
-    // }
-    // setFavorite((prevFavorite) => !prevFavorite); //TEST!
+    setNavigationOffer(true);
   };
 
 
