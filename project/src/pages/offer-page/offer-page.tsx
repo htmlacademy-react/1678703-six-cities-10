@@ -9,6 +9,7 @@ import { ReviewsList } from '../../components/reviews-list/reviews-list';
 import {OfferCard} from '../../components/offer-card/offer-card';
 import { MapOffers } from '../../components/map/map-offers';
 import { Header } from '../../components/header/header';
+import {useAppSelector} from '../../hooks/index';
 
 
 function getImagesSection(images: string[]): JSX.Element {
@@ -32,6 +33,7 @@ function getImagesSection(images: string[]): JSX.Element {
 
 export function OfferPage(): JSX.Element {
 
+  const isAuthorizedUser = useAppSelector((state) => state.isAuthorizedUser);
   const { id } = useParams();
   const currentOffer = offers.find((offer) => String(offer.id) === id);
 
@@ -111,7 +113,9 @@ export function OfferPage(): JSX.Element {
         <main className="page__main page__main--property">
           <section className="property">
             <div className="property__gallery-container container">
+
               {getImagesSection(images)}
+
             </div>
             <div className="property__container container">
               <div className="property__wrapper">
@@ -198,9 +202,11 @@ export function OfferPage(): JSX.Element {
                   </div>
                 </div>
                 <section className="property__reviews reviews">
+
                   <ReviewsList id={id} />
 
-                  <FormOffer />
+                  {isAuthorizedUser && <FormOffer />}
+
                 </section>
               </div>
             </div>
