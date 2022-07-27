@@ -69,14 +69,15 @@ export function Header(props: HeaderProps): JSX.Element{
                   <span className="header__user-name user__name">
                     {isAuthorizedUser ? 'Oliver.conner@gmail.com' : 'Sign in'}
                   </span>
-                  <span className="header__favorite-count">3</span>
+                  <span className="header__favorite-count">{isAuthorizedUser ? '4' : '0'}</span>
                 </Link>
               </li>
+              { isAuthorizedUser &&
               <li className="header__nav-item">
                 <Link className="header__nav-link" to="#">
                   <span className="header__signout">Sign out</span>
                 </Link>
-              </li>
+              </li>}
             </ul>
           </nav>
         </div>

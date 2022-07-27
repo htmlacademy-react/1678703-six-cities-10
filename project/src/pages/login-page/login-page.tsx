@@ -1,6 +1,15 @@
 import {Link} from 'react-router-dom';
+import {useAppSelector} from '../../hooks/index';
+import {Navigate} from 'react-router-dom';
+import {AppRoute} from '../../const';
 
 export function LoginPage(): JSX.Element{
+
+  const isAuthorizedUser = useAppSelector((state) => state.isAuthorizedUser);
+
+  if (isAuthorizedUser) {
+    return <Navigate to={AppRoute.Main} />;
+  }
 
   return (
     <>
