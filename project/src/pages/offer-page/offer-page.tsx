@@ -4,7 +4,7 @@ import { offers } from '../../mocks/offers';
 import { getRating } from '../../utils';
 import { ImagesOffer } from '../../components/images-offer/images-offer';
 import { QUANTITY_IMAGES } from '../../const';
-import NotFoundPage from '../not-found-page/not-found-page';
+import {NotFoundPage} from '../not-found-page/not-found-page';
 import { ReviewsList } from '../../components/reviews-list/reviews-list';
 import {OfferCard} from '../../components/offer-card/offer-card';
 import { MapOffers } from '../../components/map/map-offers';
