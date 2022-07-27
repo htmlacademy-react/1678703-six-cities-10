@@ -1,4 +1,4 @@
-import { Link, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { FormOffer } from '../../components/form-offer/form-offer';
 import { offers } from '../../mocks/offers';
 import { getRating } from '../../utils';
@@ -8,9 +8,7 @@ import NotFoundPage from '../not-found-page/not-found-page';
 import { ReviewsList } from '../../components/reviews-list/reviews-list';
 import {OfferCard} from '../../components/offer-card/offer-card';
 import { MapOffers } from '../../components/map/map-offers';
-import {AppRoute} from '../../const';
-import {Navigate} from 'react-router-dom';
-import {useState} from 'react';
+import { Header } from '../../components/header/header';
 
 
 function getImagesSection(images: string[]): JSX.Element {
@@ -34,7 +32,6 @@ function getImagesSection(images: string[]): JSX.Element {
 
 export function OfferPage(): JSX.Element {
 
-  const [navigation, setNavigation] = useState(false);
   const { id } = useParams();
   const currentOffer = offers.find((offer) => String(offer.id) === id);
 
@@ -66,15 +63,6 @@ export function OfferPage(): JSX.Element {
 
   const otherOffersMap = otherOffers.slice();
   otherOffersMap.push(currentOffer);
-
-
-  if (navigation) {
-    return <Navigate to={AppRoute.Main} />;
-  }
-
-  const handleLogoClick = () => {
-    setNavigation(true);
-  };
 
   const getOtherOffersComponent = () => {
     if (otherOffers.length === 0) {
@@ -117,44 +105,8 @@ export function OfferPage(): JSX.Element {
       </div>
 
       <div className="page">
-        <header className="header">
-          <div className="container">
-            <div className="header__wrapper">
-              <div className="header__left">
-                <Link className="header__logo-link" to="#" onClick={handleLogoClick}>
-                  <img
-                    className="header__logo"
-                    src="img/logo.svg"
-                    alt="6 cities logo"
-                    width="81"
-                    height="41"
-                  />
-                </Link>
-              </div>
-              <nav className="header__nav">
-                <ul className="header__nav-list">
-                  <li className="header__nav-item user">
-                    <Link
-                      className="header__nav-link header__nav-link--profile"
-                      to="#"
-                    >
-                      <div className="header__avatar-wrapper user__avatar-wrapper"></div>
-                      <span className="header__user-name user__name">
-                        Oliver.conner@gmail.com
-                      </span>
-                      <span className="header__favorite-count">3</span>
-                    </Link>
-                  </li>
-                  <li className="header__nav-item">
-                    <Link className="header__nav-link" to="#">
-                      <span className="header__signout">Sign out</span>
-                    </Link>
-                  </li>
-                </ul>
-              </nav>
-            </div>
-          </div>
-        </header>
+
+        <Header main={false}/>
 
         <main className="page__main page__main--property">
           <section className="property">
