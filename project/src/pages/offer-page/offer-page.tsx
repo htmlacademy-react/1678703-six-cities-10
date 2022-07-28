@@ -1,15 +1,16 @@
-import { useParams } from 'react-router-dom';
+import { useParams, Navigate } from 'react-router-dom';
 import { FormOffer } from '../../components/form-offer/form-offer';
 import { offers } from '../../mocks/offers';
 import { getRating } from '../../utils';
 import { ImagesOffer } from '../../components/images-offer/images-offer';
-import { QUANTITY_IMAGES } from '../../const';
+import { QUANTITY_IMAGES, AppRoute } from '../../const';
 import {NotFoundPage} from '../not-found-page/not-found-page';
 import { ReviewsList } from '../../components/reviews-list/reviews-list';
 import {OfferCard} from '../../components/offer-card/offer-card';
 import { MapOffers } from '../../components/map/map-offers';
 import { Header } from '../../components/header/header';
 import {useAppSelector} from '../../hooks/index';
+import {useState} from 'react';
 
 
 function getImagesSection(images: string[]): JSX.Element {
@@ -33,13 +34,19 @@ function getImagesSection(images: string[]): JSX.Element {
 
 export function OfferPage(): JSX.Element {
 
-  const isAuthorizedUser = useAppSelector((state) => state.isAuthorizedUser);
+  const isAuthorizedUser = useAppSelector((state) => !state.isAuthorizedUser);
   const { id } = useParams();
+  const [isNavigationLogin, setNavigationLogin] = useState(false);
   const currentOffer = offers.find((offer) => String(offer.id) === id);
 
   if (!currentOffer) {
     return <NotFoundPage />;
   }
+
+  if (isNavigationLogin && !isAuthorizedUser) {
+    return <Navigate to={AppRoute.Login} />;
+  }
+
   const {
     isPremium,
     price,
@@ -79,6 +86,9 @@ export function OfferPage(): JSX.Element {
     ));
   };
 
+  const handleFavoriteStatusClick = () => {
+    setNavigationLogin(true);
+  };
 
   return (
     <>
@@ -129,6 +139,7 @@ export function OfferPage(): JSX.Element {
                   <button
                     className="property__bookmark-button button"
                     type="button"
+                    onClick={handleFavoriteStatusClick}
                   >
                     <svg
                       className="property__bookmark-icon"

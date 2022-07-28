@@ -35,9 +35,6 @@ export function OfferCard(props: OfferCardProps): JSX.Element{
   const isAuthorizedUser = useAppSelector((state) => state.isAuthorizedUser);
   const dispatch = useAppDispatch();
 
-  // eslint-disable-next-line no-console
-  // console.log('11', isAuthorizedUser);
-
   const handleFavoriteStatusClick = () => {
     setNavigationLogin(true);
   };
