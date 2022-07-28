@@ -1,7 +1,6 @@
 import {Review} from '../review/review';
 import { comments } from '../../mocks/comments';
 import {getCommentsSorting} from '../../utils';
-import {useState} from 'react';
 
 type ReviewsListProps = {
   id: string | undefined;
@@ -11,24 +10,20 @@ type ReviewsListProps = {
 export function ReviewsList(props: ReviewsListProps): JSX.Element {
 
   const {id} = props;
-  const [commentsQuantity, setCommentsQuantity] = useState(0);
   const commentsOffer = comments.filter((comment) => String(comment.id) === id);
+  const sortinedComments = getCommentsSorting(commentsOffer);
+  const commentsQuantity = sortinedComments.length ? sortinedComments.length : 0;
+
 
   const getReviewsComponent = () => {
-    if (commentsOffer.length === 0) {
+    if (commentsQuantity === 0) {
       return '';
     }
-
-    const sortinedComments = getCommentsSorting(commentsOffer);
-
-    setCommentsQuantity(sortinedComments.length);
-
-    // eslint-disable-next-line no-console
-    console.log('222', sortinedComments.length);
-
     return sortinedComments.map((value, currentId) => {
       const keyValue = `${value}-${currentId}`;
-      return <Review key={keyValue} review={value} />;
+      return (
+        <Review key={keyValue} review={value} />
+      );
     });
   };
 

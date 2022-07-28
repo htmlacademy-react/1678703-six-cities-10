@@ -95,7 +95,7 @@ export const QUANTITY_OTHER_PLACES = 3;
 export const DEFAULT_CITY = 'Paris';
 
 export const QUANTITY_IMAGES = 6;
-export const QUANTITY_COMMENTS = 5;
+export const QUANTITY_COMMENTS = 3;
 
 export const TEXT_SIGN_IN = 'Sign In';
 
