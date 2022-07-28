@@ -21,3 +21,7 @@ export const authorizedUser = createAction(ActionType.AUTHORIZED_USER, (value) =
 export const selectOfferId = createAction(ActionType.SELECT_OFFER_ID, (value) => ({
   payload: value,
 }));
+
+export const loadFavoritesOffers = createAction(ActionType.LOAD_FAVORITES_OFFERS, (value) => ({
+  payload: value,
+}));

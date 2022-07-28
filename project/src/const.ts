@@ -86,6 +86,7 @@ export const ActionType = {
   OFFERS_SORTING: 'offersSorting',
   AUTHORIZED_USER: 'authorizedUser',
   SELECT_OFFER_ID: 'selectOfferId',
+  LOAD_FAVORITES_OFFERS: 'loadFavoritesOffers',
 };
 
 export const PERCENT_RATING = 20;

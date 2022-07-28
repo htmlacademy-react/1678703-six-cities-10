@@ -15,8 +15,11 @@ export function Header(props: HeaderProps): JSX.Element{
 
   const {mainPage, favoritePage} = props;
   const [navigation, setNavigation] = useState(false);
-  const isAuthorizedUser = useAppSelector((state) => !state.isAuthorizedUser);
   const [isNavigationLogin, setNavigationLogin] = useState(false);
+  const isAuthorizedUser = useAppSelector((state) => state.isAuthorizedUser);
+  const favoritesOffers = useAppSelector((state) => state.favoritesOffers);
+  const quantityFavoritesOffers = String(favoritesOffers.length);
+
 
   if (isNavigationLogin) {
     if(!isAuthorizedUser) {
@@ -58,9 +61,9 @@ export function Header(props: HeaderProps): JSX.Element{
               />
             </Link>
           </div>
-          <nav className="header__nav" onClick={handleProfileClick}>
+          <nav className="header__nav" >
             <ul className="header__nav-list">
-              <li className="header__nav-item user">
+              <li className="header__nav-item user" onClick={handleProfileClick}>
                 <Link
                   className="header__nav-link header__nav-link--profile"
                   to="#"
@@ -69,7 +72,7 @@ export function Header(props: HeaderProps): JSX.Element{
                   <span className="header__user-name user__name">
                     {isAuthorizedUser ? 'Oliver.conner@gmail.com' : 'Sign in'}
                   </span>
-                  <span className="header__favorite-count">{isAuthorizedUser ? '4' : '0'}</span>
+                  <span className="header__favorite-count">{isAuthorizedUser ? quantityFavoritesOffers : '0'}</span>
                 </Link>
               </li>
               { isAuthorizedUser &&
