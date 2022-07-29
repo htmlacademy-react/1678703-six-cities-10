@@ -24,9 +24,10 @@ export enum SortingType {
   TopRated = 'Top rated first',
 }
 
-export enum ApiPaths {
+export enum APIRoute {
   Hotels = '/hotels',
-  Login = '/login'
+  Login = '/login',
+  Logout = '/logout',
 }
 
 export enum AuthorizationStatus {
@@ -84,18 +85,24 @@ export const ActionType = {
   CHANGE_CITY: 'changeCity',
   LOAD_OFFERS: 'loadOffers',
   OFFERS_SORTING: 'offersSorting',
+  REQUIRE_AUTHORIZATION: 'requireAuthorization',
+  SELECT_OFFER_ID: 'selectOfferId',
+  LOAD_FAVORITES_OFFERS: 'loadFavoritesOffers',
+  SET_ERROR: 'setError'
 };
 
 export const PERCENT_RATING = 20;
-
 export const QUANTITY_OTHER_PLACES = 3;
-
 export const DEFAULT_CITY = 'Paris';
 
 export const QUANTITY_IMAGES = 6;
-
+export const QUANTITY_COMMENTS = 3;
 export const TEXT_SIGN_IN = 'Sign In';
 
 export const URL_MARKER_DEFAULT = 'img/pin.svg';
 export const URL_MARKER_CURRENT = 'img/pin-active.svg';
+
+export const BACKEND_URL = 'https://10.react.pages.academy/six-cities';
+export const REQUEST_TIMEOUT = 5000;
+export const TIMEOUT_SHOW_ERROR = 5000;
 
