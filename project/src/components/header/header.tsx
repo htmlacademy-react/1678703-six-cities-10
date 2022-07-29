@@ -1,5 +1,5 @@
 import {Link} from 'react-router-dom';
-import {AppRoute} from '../../const';
+import {AppRoute, AuthorizationStatus} from '../../const';
 import {Navigate} from 'react-router-dom';
 import {useState} from 'react';
 import {useAppSelector} from '../../hooks/index';
@@ -16,13 +16,12 @@ export function Header(props: HeaderProps): JSX.Element{
   const {mainPage, favoritePage} = props;
   const [navigation, setNavigation] = useState(false);
   const [isNavigationLogin, setNavigationLogin] = useState(false);
-  const isAuthorizedUser = useAppSelector((state) => state.isAuthorizedUser);
+  const {status, email} = useAppSelector((state) => state.authorizationStatus);
   const favoritesOffers = useAppSelector((state) => state.favoritesOffers);
   const quantityFavoritesOffers = String(favoritesOffers.length);
 
-
   if (isNavigationLogin) {
-    if(!isAuthorizedUser) {
+    if(status !== AuthorizationStatus.Auth) {
       return <Navigate to={AppRoute.Login} />;
     }
     return <Navigate to={AppRoute.Favorites} />;
@@ -70,12 +69,12 @@ export function Header(props: HeaderProps): JSX.Element{
                 >
                   <div className="header__avatar-wrapper user__avatar-wrapper"></div>
                   <span className="header__user-name user__name">
-                    {isAuthorizedUser ? 'Oliver.conner@gmail.com' : 'Sign in'}
+                    {status === AuthorizationStatus.Auth ? email : 'Sign in'}
                   </span>
-                  <span className="header__favorite-count">{isAuthorizedUser ? quantityFavoritesOffers : '0'}</span>
+                  <span className="header__favorite-count">{status === AuthorizationStatus.Auth ? quantityFavoritesOffers : '0'}</span>
                 </Link>
               </li>
-              { isAuthorizedUser &&
+              { status === AuthorizationStatus.Auth &&
               <li className="header__nav-item">
                 <Link className="header__nav-link" to="#">
                   <span className="header__signout">Sign out</span>

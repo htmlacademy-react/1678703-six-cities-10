@@ -1,7 +1,7 @@
 import {Link} from 'react-router-dom';
 import {Offer} from '../../types/offer';
 import {getRating} from '../../utils';
-import {AppRoute} from '../../const';
+import {AppRoute, AuthorizationStatus} from '../../const';
 import {Navigate} from 'react-router-dom';
 import {useState} from 'react';
 import {useAppSelector, useAppDispatch} from '../../hooks/index';
@@ -32,7 +32,7 @@ export function OfferCard(props: OfferCardProps): JSX.Element{
   const [isNavigationOffer, setNavigationOffer] = useState(false);
   const [isNavigationLogin, setNavigationLogin] = useState(false);
 
-  const isAuthorizedUser = useAppSelector((state) => state.isAuthorizedUser);
+  const authorizationStatus = useAppSelector((state) => state.authorizationStatus.status);
   const dispatch = useAppDispatch();
 
   const handleFavoriteStatusClick = () => {
@@ -43,7 +43,7 @@ export function OfferCard(props: OfferCardProps): JSX.Element{
     return <Navigate to={AppRoute.Offer + id} />;
   }
 
-  if (isNavigationLogin && !isAuthorizedUser) {
+  if (isNavigationLogin && authorizationStatus !== AuthorizationStatus.Auth) {
     return <Navigate to={AppRoute.Login} />;
   }
 

@@ -5,9 +5,9 @@ import {AppRoute} from '../../const';
 
 export function LoginPage(): JSX.Element{
 
-  const isAuthorizedUser = useAppSelector((state) => state.isAuthorizedUser);
+  const authorizationStatus = useAppSelector((state) => state.authorizationStatus.status);
 
-  if (isAuthorizedUser) {
+  if (authorizationStatus) {
     return <Navigate to={AppRoute.Main} />;
   }
 

@@ -34,7 +34,7 @@ function getImagesSection(images: string[]): JSX.Element {
 
 export function OfferPage(): JSX.Element {
 
-  const isAuthorizedUser = useAppSelector((state) => !state.isAuthorizedUser);
+  const authorizationStatus = useAppSelector((state) => state.authorizationStatus.status);
   const { id } = useParams();
   const [isNavigationLogin, setNavigationLogin] = useState(false);
   const currentOffer = offers.find((offer) => String(offer.id) === id);
@@ -43,7 +43,7 @@ export function OfferPage(): JSX.Element {
     return <NotFoundPage />;
   }
 
-  if (isNavigationLogin && !isAuthorizedUser) {
+  if (isNavigationLogin && !authorizationStatus) {
     return <Navigate to={AppRoute.Login} />;
   }
 
@@ -216,7 +216,7 @@ export function OfferPage(): JSX.Element {
 
                   <ReviewsList id={id} />
 
-                  {isAuthorizedUser && <FormOffer />}
+                  {authorizationStatus && <FormOffer />}
 
                 </section>
               </div>
